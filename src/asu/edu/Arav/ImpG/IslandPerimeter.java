@@ -1,7 +1,7 @@
 package asu.edu.Arav.ImpG;
 
 public class IslandPerimeter {
-	public int islandPerimeter(int[][] grid) {
+	public static int islandPerimeter(int[][] grid) {
 		int p = 0;
 		for(int i = 0; i < grid.length; i++) {
 			for(int j=0; j < grid[0].length; j++) {
@@ -21,9 +21,7 @@ public class IslandPerimeter {
 				}
 			}
 		}
-		
-		
-		return 0;
+		return p;
 	}
 	
 	public static void main(String[] args) {
