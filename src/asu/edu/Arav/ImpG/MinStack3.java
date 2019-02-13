@@ -34,6 +34,6 @@ public class MinStack3 {
 	}
 
 	public int getMin() {
-		return head.value;
+		return head.min;
 	}
 }
