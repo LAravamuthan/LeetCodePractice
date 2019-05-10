@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0aff79e8-c835-4b29-ad87-eca6d8cb0d2b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/asu/edu/Arav/ImpG/IsPowerOf2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/asu/edu/Arav/ImpG/MinimumMeetingRoom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/asu/edu/Arav/ImpG/MinimumMeetingRoom2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/asu/edu/Arav/ImpG/NumberOfIslands.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/asu/edu/Arav/ImpG/Search2DArray.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/asu/edu/Arav/ImpG/SubArraySum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/asu/edu/Arav/ImpG/UniqueEmailAddress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/asu/edu/Arav/ImpG/MaxStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/asu/edu/Arav/ImpG/MaxStack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/asu/edu/AravL/utility/Interval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/asu/edu/AravL/utility/Interval.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/asu/edu/Arav/ImpG/AddStrings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/asu/edu/Arav/ImpG/SubArraySum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/asu/edu/Arav/ImpG/SubArraySum.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,38 +15,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/asu/edu/Arav/ImpG/IsPowerOf2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/asu/edu/Arav/ImpG/Search2DArray.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/asu/edu/Arav/ImpG/MinimumMeetingRoom.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="11" column="51" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#238#247#0" expanded="true" />
-                <element signature="e#349#358#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/asu/edu/Arav/ImpG/MinimumMeetingRoom2.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -98,14 +58,46 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/asu/edu/Arav/ImpG/SubArraySum.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+            <state relative-caret-position="181">
+              <caret line="66" column="35" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="35" />
               <folding>
-                <element signature="e#235#236#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1059#1077#0" expanded="true" />
+                <element signature="e#1591#1592#0" expanded="true" />
+                <element signature="e#1615#1616#0" expanded="true" />
+                <element signature="e#1813#1814#0" expanded="true" />
+                <element signature="e#1837#1838#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/asu/edu/Arav/ImpG/HouseRobber.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/asu/edu/Arav/ImpG/AddStrings.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="232">
+              <caret line="25" column="11" lean-forward="true" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/Map.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="134">
+              <caret line="585" column="14" selection-start-line="585" selection-start-column="14" selection-end-line="585" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -169,6 +161,8 @@
         <option value="$PROJECT_DIR$/src/asu/edu/Arav/ImpG/UniqueEmailAddress.java" />
         <option value="$PROJECT_DIR$/src/asu/edu/Arav/ImpG/NumberOfIslands.java" />
         <option value="$PROJECT_DIR$/src/asu/edu/Arav/ImpG/SubArraySum.java" />
+        <option value="$PROJECT_DIR$/src/asu/edu/Arav/ImpG/HouseRobber.java" />
+        <option value="$PROJECT_DIR$/src/asu/edu/Arav/ImpG/AddStrings.java" />
       </list>
     </option>
   </component>
@@ -234,7 +228,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557449208261" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557463402111" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -253,7 +247,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.NumberOfIslands">
+  <component name="RunManager" selected="Application.SubArraySum">
     <configuration name="MinimumMeetingRoom2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="asu.edu.Arav.ImpG.MinimumMeetingRoom2" />
       <module name="LeetCodePractice" />
@@ -280,6 +274,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SubArraySum" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="asu.edu.Arav.ImpG.SubArraySum" />
+      <module name="LeetCodePractice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="asu.edu.Arav.ImpG.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UniqueEmailAddress" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="asu.edu.Arav.ImpG.UniqueEmailAddress" />
       <module name="LeetCodePractice" />
@@ -295,6 +302,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.SubArraySum" />
         <item itemvalue="Application.NumberOfIslands" />
         <item itemvalue="Application.UniqueEmailAddress" />
         <item itemvalue="Application.MinimumMeetingRoom2" />
@@ -314,12 +322,12 @@
       <workItem from="1550348138178" duration="1863000" />
       <workItem from="1550426963425" duration="1450000" />
       <workItem from="1550819560287" duration="967000" />
-      <workItem from="1557275959207" duration="25402000" />
+      <workItem from="1557275959207" duration="32469000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29682000" />
+    <option name="totallyTimeSpent" value="36749000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="63" width="1550" height="768" extended-state="6" />
@@ -335,8 +343,8 @@
       <window_info anchor="bottom" id="Messages" weight="0.32861635" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32861635" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39937106" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32861635" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.39937106" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -374,11 +382,22 @@
           <properties />
           <option name="timeStamp" value="5" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/asu/edu/Arav/ImpG/SubArraySum.java</url>
+          <line>34</line>
+          <properties />
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>subarraySum2(listofint, 2)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>uniqueLocalNames</expression-string>
         <language-id>JAVA</language-id>
@@ -416,11 +435,6 @@
       </expression>
       <expression>
         <expression-string>localNames</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>names</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -542,13 +556,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="585" column="14" selection-start-line="585" selection-start-column="14" selection-end-line="585" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/asu/edu/Arav/ImpG/SubArraySum.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+        <state relative-caret-position="181">
+          <caret line="66" column="35" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="35" />
           <folding>
-            <element signature="e#235#236#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#1059#1077#0" expanded="true" />
+            <element signature="e#1591#1592#0" expanded="true" />
+            <element signature="e#1615#1616#0" expanded="true" />
+            <element signature="e#1813#1814#0" expanded="true" />
+            <element signature="e#1837#1838#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asu/edu/Arav/ImpG/HouseRobber.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asu/edu/Arav/ImpG/AddStrings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="25" column="11" lean-forward="true" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
         </state>
       </provider>
     </entry>
