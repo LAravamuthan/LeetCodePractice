@@ -1,3 +1,4 @@
+/*
 package asu.edu.Arav.ImpG;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class MaxStack {
 
 	public MaxStack() {
 		s = new ArrayList<Integer>();
-		s1.remove(index)
+		s1.remove(index);
 	}
 
 	public void push(int x) {
@@ -45,3 +46,4 @@ public class MaxStack {
     	return 0;
     }
 }
+*/
