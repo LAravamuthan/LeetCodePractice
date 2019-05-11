@@ -25,7 +25,6 @@ public class HouseRobber {
             }
             profitList[i] = Math.max(oneHouseBeforeProfit, twoHouseBeforeProfit + nums[i]);
         }
-
         return profitList[nums.length-1];
     }
 }
