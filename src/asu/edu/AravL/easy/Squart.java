@@ -66,16 +66,14 @@ public class Squart {
     }
 
     public static int mySqrt3(int x) {
-
-        int ans = 1;
-        int tempAns = 1;
-        do{
-            tempAns = ans;
-            ans = ans - ((ans*ans - x)/2*ans);
+        if(x == 0){
+            return 0;
         }
-        while(ans != tempAns);
-
-        return ans;
+        long i = x;
+        while(i > x/i){
+            i = (i + (x/i))/2;
+        }
+        return (int)i;
     }
 
     public static void main(String[] args){
