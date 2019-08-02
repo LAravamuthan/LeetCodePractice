@@ -12,9 +12,7 @@ public class FindKLargestElement {
         if (nums == null || nums.length < k) {
             return -1;
         }
-
         PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>();
-
         for (int i : nums) {
             if (minHeap.size() < k) {
                 minHeap.add(i);
