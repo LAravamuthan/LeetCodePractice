@@ -1,7 +1,6 @@
 package asu.edu.Arav.ImpFaceBook;
 
 public class UglyNumber {
-
     public boolean isUgly(int num) {
         int[] primeFactors = new int[]{2, 3, 5};
 
