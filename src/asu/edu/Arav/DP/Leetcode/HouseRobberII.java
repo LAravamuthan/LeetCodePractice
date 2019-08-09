@@ -33,4 +33,6 @@ public class HouseRobberII {
         }
         return Math.max(lastIndexMaxMoney, secondLastIndexMaxMoney);
     }
+
+
 }
