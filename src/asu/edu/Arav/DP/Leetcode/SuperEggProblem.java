@@ -13,7 +13,6 @@ public class SuperEggProblem {
     public int superEggDrop(int K, int N) {
 
 
-
         int[] numberOfFloors = new int[K + 1];
         int maxSteps = 0;
         for (; numberOfFloors[K] < N; maxSteps++) {
@@ -23,11 +22,47 @@ public class SuperEggProblem {
         }
         return maxSteps;
     }
+
+    public int[][] dfsResult;
+
+
     public int superEggDrop2(int K, int N) {
+        dfsResult = new int[K + 1][N + 1];
+        int steps = recursionDfs(K, N);
+        return steps;
+    }
 
-        
 
-
-        return 0;
+    /* This dfs function finds the left sub tree and right tree and finds the point of
+    intersection. The idea is to use Binary Search mechanism
+    */
+    public int recursionDfs(int i, int j) {
+        if (i == 1) {
+            return j;
+        }
+        if (j == 0) {
+            return 0;
+        }
+        if (j == 1) {
+            return 1;
+        }
+        if(dfsResult[i][j] > 0){
+            return dfsResult[i][j];
+        }
+        int lo = 0;
+        int hi = j;
+        while (lo < hi) {
+            int mid = (lo + hi) / 2;
+            int leftSubTreeSteps = recursionDfs(i - 1, mid - 1);
+            int rightSubTreeSteps = recursionDfs(i, j - mid);
+            if (leftSubTreeSteps < rightSubTreeSteps) {
+                lo = mid + 1;
+            } else {
+                hi = mid;
+            }
+        }
+        int result = 1 + Math.max(recursionDfs(i-1, lo-1), recursionDfs(i, j - lo));
+        dfsResult[i][j] = result;
+        return result;
     }
 }
