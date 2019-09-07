@@ -1,6 +1,6 @@
 package asu.edu.arav.ImpG;
 
-import asu.edu.AravL.utility.Counter;
+import asu.edu.aravl.utility.Counter;
 
 public class TotalFruitCounter {
 

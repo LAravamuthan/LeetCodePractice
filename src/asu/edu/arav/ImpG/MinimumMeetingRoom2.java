@@ -1,6 +1,6 @@
 package asu.edu.arav.ImpG;
 
-import asu.edu.AravL.utility.Interval;
+import asu.edu.aravl.utility.Interval;
 
 import java.util.Arrays;
 import java.util.Comparator;

@@ -1,6 +1,6 @@
 package asu.edu.arav.ImpG;
 
-import asu.edu.AravL.utility.NodeMin;
+import asu.edu.aravl.utility.NodeMin;
 
 public class MinStack3 {
 

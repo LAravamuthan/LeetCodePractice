@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import asu.edu.AravL.utility.Interval;
+import asu.edu.aravl.utility.Interval;
 
 public class MergeInterval {
 

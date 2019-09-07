@@ -1,6 +1,6 @@
 package asu.edu.arav.ImpG;
 
-import asu.edu.AravL.utility.ListNode;
+import asu.edu.aravl.utility.ListNode;
 
 /**
  * @author Aravamuthan Lakshminarayanan

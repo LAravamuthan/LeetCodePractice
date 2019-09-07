@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import asu.edu.AravL.utility.ListNode;
+import asu.edu.aravl.utility.ListNode;
 
 public class MergeKList {
 
