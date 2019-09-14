@@ -20,13 +20,15 @@ public class TresureIsland {
         grid[0][0] = 'D';
         int steps = 0;
         while (!q.isEmpty()) {
-            TwoDPoint p = q.poll();
-            if (grid[p.r][p.c] == 'X') {
-                return steps;
-            }
-            for (int[] dir : dirs) {
-                if (isSafe(p.r + dir[0], p.c + dir[1], grid)) {
-                    q.offer(new TwoDPoint(p.r + dir[0], p.c + dir[1]));
+            for(int elementsInCurrentLevel = q.size(); elementsInCurrentLevel > 0; elementsInCurrentLevel--){
+                TwoDPoint p = q.poll();
+                if (grid[p.r][p.c] == 'X') {
+                    return steps;
+                }
+                for (int[] dir : dirs) {
+                    if (isSafe(p.r + dir[0], p.c + dir[1], grid)) {
+                        q.offer(new TwoDPoint(p.r + dir[0], p.c + dir[1]));
+                    }
                 }
             }
             steps++;
