@@ -34,7 +34,7 @@ public class ZeroOneMatrix {
         contour.offer(new TwoDPoint(r, c));
         int steps = 0;
         while (!contour.isEmpty()) {
-            for(int elementsInCurrentLevel = contour.size(); elementsInCurrentLevel > 0; elementsInCurrentLevel--){
+            for (int elementsInCurrentLevel = contour.size(); elementsInCurrentLevel > 0; elementsInCurrentLevel--) {
                 TwoDPoint p = contour.poll();
                 if (matrix[p.r][p.c] == 0) {
                     return steps;
