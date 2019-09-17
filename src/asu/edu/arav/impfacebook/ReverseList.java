@@ -2,6 +2,8 @@ package asu.edu.arav.impfacebook;
 
 import asu.edu.aravl.utility.ListNode;
 
+import java.util.List;
+
 /**
  * @author Aravamuthan Lakshminarayanan
  * @author Bhavana Vakkalagadda
@@ -10,16 +12,7 @@ import asu.edu.aravl.utility.ListNode;
 public class ReverseList {
 
     public ListNode head;
-
-    public ListNode reverseList(ListNode head) {
-        if(head == null){
-            return null;
-        }
-        recursive(head);
-        head.next = null;
-        return this.head;
-
-    }
+    public ListNode headG;
 
     public void recursive(ListNode node){
         if(node.next == null){
@@ -58,5 +51,15 @@ public class ReverseList {
         head = current;
         return head;
     }
+
+    public void rLR(ListNode prev, ListNode head){
+        if(head == null)return;
+        if(head.next == null){
+            headG = head;
+        }
+        rLR(head, head.next);
+        head.next = prev;
+    }
+
 
 }
