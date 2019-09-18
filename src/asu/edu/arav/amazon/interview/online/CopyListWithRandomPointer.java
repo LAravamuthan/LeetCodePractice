@@ -62,7 +62,35 @@ public class CopyListWithRandomPointer {
     }
 
     /*  Iterative but with O(1) space complexity */
-    
 
-
+    public Node copyRandomListItrBetter(Node head) {
+        if (head == null) {
+            return null;
+        }
+        Node temp = head;
+        while (temp != null) {
+            Node newTemp = new Node(temp.val, null, null);
+            newTemp.next = temp.next;
+            temp.next = newTemp;
+            temp = temp.next;
+        }
+        temp = head;
+        while (temp != null) {
+            if (temp.random != null) {
+                temp.next.random = temp.random.next;
+            }
+            temp = temp.next.next;
+        }
+        temp = head;
+        Node newHead = temp.next;
+        while (temp != null) {
+            Node tempNode = temp.next;
+            temp.next = tempNode.next;
+            if (tempNode.next != null) {
+                tempNode.next = temp.next.next;
+            }
+            temp = temp.next;
+        }
+        return newHead;
+    }
 }
