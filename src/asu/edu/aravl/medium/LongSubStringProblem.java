@@ -5,6 +5,9 @@ import java.util.Map;
 
 /*Given a string, find the length of the longest substring without repeating characters.
 
+https://leetcode.com/explore/interview/card/amazon/76/array-and-strings/2961/
+https://leetcode.com/problems/longest-substring-without-repeating-characters/
+
 Example 1:
 
 Input: "abcabcbb"
@@ -43,5 +46,30 @@ public class LongSubStringProblem {
 			resultLength = tempResultLength > resultLength? tempResultLength: resultLength;
 		}
 		return resultLength;
+	}
+
+	public int lengthOfLongestSubstring2(String s) {
+		if (s == null || s.length() == 0) {
+			return 0;
+		}
+		if (s.length() == 1) {
+			return 1;
+		}
+		int ans = 0, res = 0;
+
+		Map<Character, Integer> charMap = new HashMap<Character, Integer>();
+		for (int i = 0; i < s.length(); i++) {
+			if (charMap.containsKey(s.charAt(i)) && i - charMap.get(s.charAt(i)) <= ans) {
+				ans = i - charMap.get(s.charAt(i));
+			} else {
+				ans++;
+			}
+			if (s.length() - i - 1 + ans < res) {
+				return res;
+			}
+			charMap.put(s.charAt(i), i);
+			res = Math.max(res, ans);
+		}
+		return res;
 	}
 }
