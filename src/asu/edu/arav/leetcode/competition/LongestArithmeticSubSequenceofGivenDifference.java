@@ -16,32 +16,11 @@ public class LongestArithmeticSubSequenceofGivenDifference {
         if (arr.length == 1) {
             return 1;
         }
-        int max = Integer.MIN_VALUE;
-        Map<Integer, List<Integer>> mapZ = new HashMap<Integer, List<Integer>>();
-        for (int i = 0; i < arr.length; i++) {
-            if(mapZ.containsKey(arr[i])){
-                mapZ.get(arr[i]).add(i);
-            }else{
-                List<Integer> temp = new ArrayList<Integer>();
-                temp.add(i);
-                mapZ.put(arr[i], temp);
-            }
-
-        }
-        Stack<Integer> st = new Stack<Integer>();
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == Integer.MIN_VALUE) {
-                continue;
-            }
-            st.push(arr[i]);
-            arr[i] = Integer.MIN_VALUE;
-            while (mapZ.containsKey(st.peek() + difference) && hasGreaterIndex(mapZ.get(st.peek() + difference),i)) {
-                st.push(st.peek() + difference);
-                mapZ.remove(arr[i]);
-                arr[i] = Integer.MIN_VALUE;
-            }
-            max = Math.max(max, st.size());
-            st.clear();
+        int max = 1;
+        Map<Integer, Integer> mapZ = new HashMap<Integer, Integer>();
+        for(int a : arr){
+            mapZ.put(a, mapZ.getOrDefault(a-difference, 0)+1);
+            max = Math.max(mapZ.get(a), max);
         }
         return max;
     }
