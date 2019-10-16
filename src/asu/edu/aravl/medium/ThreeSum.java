@@ -69,7 +69,7 @@ public class ThreeSum {
 						high--;
 				}
 			}
-			sum = 0;
+			sum = 0;// to make sure that the sum does go to zero after every iteration
 		}
 		return answer;
 	}
