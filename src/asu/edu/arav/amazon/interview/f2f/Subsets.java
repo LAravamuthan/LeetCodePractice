@@ -40,8 +40,9 @@ public class Subsets {
             candidateSet.add(inputNums[i]);
             // making dfs to mark new candidates using current element
             dfsBT(new ArrayList<>(candidateSet), i + 1);
-            // why this lets think about this now it makes sense by making a new Array List
+            // why this lets think about this.... now it makes sense by making a new Array List
             // in the above step lets validate our results
+            // removes the used element form candidates with other elements
             candidateSet.remove(candidateSet.size() - 1);
         }
     }
