@@ -15,6 +15,8 @@ import java.util.Queue;
  */
 public class BinaryTreeLevelOrderTraversal {
 
+    List<List<Integer>> ansListRecur = new ArrayList<>();
+
     // classic level order traversal so I think its enough to just write this
     public List<List<Integer>> levelOrder(TreeNode root) {
         if (root == null) {
@@ -41,5 +43,27 @@ public class BinaryTreeLevelOrderTraversal {
             ansList.add(l);
         }
         return ansList;
+    }
+
+    // let us try to do the recursion version
+    public List<List<Integer>> levelOrder1(TreeNode root) {
+        if(root == null){
+            return new ArrayList<>();
+        }
+        dfsRecursion(root, 0);
+        return ansListRecur;
+    }
+
+    public void dfsRecursion(TreeNode root, int level){
+        if(level == ansListRecur.size()){
+            ansListRecur.add(new ArrayList<>());
+        }
+        ansListRecur.get(level).add(root.val);
+        if(root.left != null){
+            dfsRecursion(root.left, level + 1);
+        }
+        if(root.right != null){
+            dfsRecursion(root.right, level + 1);
+        }
     }
 }
