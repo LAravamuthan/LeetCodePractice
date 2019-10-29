@@ -1,4 +1,4 @@
-package asu.edu.arav.amazon.interview.leetcode.module.arraysandstrings;
+package asu.edu.arav.amazon.interview.leetcode.module.TreesAndGraphs;
 
 import asu.edu.aravl.utility.TreeNode;
 
