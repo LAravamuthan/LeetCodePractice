@@ -24,6 +24,26 @@ public class ReverseLinkedList {
         return prev;
     }
 
+    ListNode head = null;
+    public ListNode reverseListR(ListNode head){
+        if(head == null){
+            return head;
+        }
+        rLL(null, head);
+        return this.head;
+    }
+
+    public void rLL(ListNode prev, ListNode current){
+        if(current.next == null){
+            head = current;
+        }else {
+            rLL(current, current.next);
+        }
+        current.next = prev;
+    }
+
+
+
 
     /*public ListNode reverseList(ListNode head){
         rLR(null, head);
