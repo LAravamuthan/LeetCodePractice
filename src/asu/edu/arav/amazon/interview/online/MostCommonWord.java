@@ -20,7 +20,7 @@ public class MostCommonWord {
         }
         Map<String, Integer> sToCount = new HashMap<String, Integer>();
 
-        String[] paraStrings = paragraph.replaceAll("[^a-zA-Z ]", " ").toLowerCase().split("\\s+");
+        String[] paraStrings = paragraph.replaceAll("[^a-zA-Z]", " ").toLowerCase().split("\\s+");
         //String[] paraStrings = paragraph.split(" ");
         for(String ps : paraStrings){
             if(!bsSet.contains(ps)){

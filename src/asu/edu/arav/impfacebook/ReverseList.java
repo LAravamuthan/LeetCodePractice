@@ -8,6 +8,7 @@ import java.util.List;
  * @author Aravamuthan Lakshminarayanan
  * @author Bhavana Vakkalagadda
  * @project LeetCodePractice
+ * @link https://leetcode.com/problems/reverse-linked-list/
  */
 public class ReverseList {
 
