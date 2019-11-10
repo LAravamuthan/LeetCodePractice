@@ -34,7 +34,7 @@ public class ShortestUnsortedContinuousSubarray {
                 }
             }
         }
-        return l < r ? r - l + 1 : 0;
+        return l <= r ? r - l + 1 : 0;
     }
 
     // this is using sorting Onlgn
@@ -59,7 +59,7 @@ public class ShortestUnsortedContinuousSubarray {
                 r = Math.max(r, i);
             }
         }
-        return l < r ? r - l + 1 : 0;
+        return l <= r ? r - l + 1 : 0;
     }
 
     //this one is using stack same concept
@@ -92,16 +92,65 @@ public class ShortestUnsortedContinuousSubarray {
             }
             st.push(i);
         }
-        return l < r ? r - l + 1 : 0;
+        return l <= r ? r - l + 1 : 0;
     }
 
     // let us try the solution without extra space and time complexity O(n)
-    public int findUnsortedSubarray3(int[] nums) {
+    public static int findUnsortedSubarray3(int[] nums) {
+        // the minimum in the left boundary
+        // the maximum in the right boundary
+        int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
+        // slopeBroken flag to track slope breakage
+        boolean slopeBroken = false;
 
-        
-        return 0;
+        // from the left start find the whereever the property breaks
+        // when it breaks store the min
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] < nums[i - 1]) {
+                slopeBroken = true;
+            }
+            if(slopeBroken){
+                min = Math.min(min, nums[i]);
+            }
+        }
+        if (!slopeBroken) {
+            return 0;
+        }
+        // slopeBroken flag to track slope breakage
+        // from the right start find the whereever the property breaks
+        // when it breaks store the min
+        slopeBroken = false;
+        for (int i = nums.length - 2; i >= 0; i--) {
+            if (nums[i] > nums[i + 1]) {
+                slopeBroken = true;
+            }if(slopeBroken){
+                max = Math.max(max, nums[i]);
+            }
+
+        }
+        int l,r;
+        // find the element till which elements are lesser than min
+        // the moment it crosees min the element is part of
+        // to be sorted array
+        for (l = 0; l < nums.length; l++) {
+            if (nums[l] > min) {
+                break;
+            }
+        }
+        // find the element till which elements are more than max
+        // the moment it goes below max the element is part of
+        // to be sorted array
+        for (r = nums.length - 1; r >= 0; r--) {
+            if (nums[r] < max) {
+                break;
+            }
+        }
+        return l <= r ? r - l + 1 : 0;
     }
 
+    public static void main(String[] args){
+        findUnsortedSubarray3(new int[]{2,1,3,4,5});
+    }
 
 
 }
