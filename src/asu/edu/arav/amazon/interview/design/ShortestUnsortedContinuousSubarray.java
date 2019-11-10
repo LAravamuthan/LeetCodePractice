@@ -151,6 +151,4 @@ public class ShortestUnsortedContinuousSubarray {
     public static void main(String[] args){
         findUnsortedSubarray3(new int[]{2,1,3,4,5});
     }
-
-
 }
