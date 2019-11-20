@@ -68,7 +68,6 @@ public class WordLadder {
             distanceTravelled++;
         }
         return 0;
-
     }
 
     // method to check whether two strings are only 1 distance
