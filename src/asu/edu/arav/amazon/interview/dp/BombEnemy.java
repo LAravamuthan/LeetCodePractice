@@ -1,4 +1,4 @@
-package asu.edu.arav.amazon.interview.medium;
+package asu.edu.arav.amazon.interview.dp;
 
 /**
  * @author Aravamuthan Lakshminarayanan

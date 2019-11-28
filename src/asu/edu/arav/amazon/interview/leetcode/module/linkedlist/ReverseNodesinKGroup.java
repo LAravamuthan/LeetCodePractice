@@ -1,6 +1,6 @@
 package asu.edu.arav.amazon.interview.leetcode.module.linkedlist;
 
-import asu.edu.arav.amazon.interview.medium.ReverseLinkedListII;
+import asu.edu.arav.amazon.interview.linkedlist.ReverseLinkedListII;
 import asu.edu.aravl.utility.ListNode;
 
 /**

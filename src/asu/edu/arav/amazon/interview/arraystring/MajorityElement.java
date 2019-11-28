@@ -1,4 +1,4 @@
-package asu.edu.arav.amazon.interview.easy;
+package asu.edu.arav.amazon.interview.arraystring;
 
 import java.util.Arrays;
 import java.util.HashMap;

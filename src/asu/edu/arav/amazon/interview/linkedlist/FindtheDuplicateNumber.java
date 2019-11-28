@@ -1,4 +1,4 @@
-package asu.edu.arav.amazon.interview.easy;
+package asu.edu.arav.amazon.interview.linkedlist;
 
 import java.util.HashSet;
 import java.util.Set;

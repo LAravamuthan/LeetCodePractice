@@ -1,4 +1,4 @@
-package asu.edu.arav.amazon.interview.hard;
+package asu.edu.arav.amazon.interview.dp;
 
 import java.util.HashMap;
 import java.util.HashSet;
