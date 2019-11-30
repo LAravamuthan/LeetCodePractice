@@ -1,6 +1,5 @@
 package asu.edu.arav.amazon.interview.leetcode.module.linkedlist;
 
-import asu.edu.arav.impgoogle.MergeSLinkedList;
 import asu.edu.aravl.utility.ListNode;
 
 /**
