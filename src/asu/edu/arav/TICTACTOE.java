@@ -1,7 +1,5 @@
 package asu.edu.arav;
 
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
-
 /**
  * @author Aravamuthan Lakshminarayanan
  * @author Bhavana Vakkalagadda
