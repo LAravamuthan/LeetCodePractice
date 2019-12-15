@@ -19,7 +19,7 @@ public class FindKthLargestElement {
                 minHeap.add(num);
             } else if (minHeap.peek() < num){
                 minHeap.add(num);
-                minHeap.remove(num);
+                minHeap.remove();
             }
         }
         return minHeap.poll();
