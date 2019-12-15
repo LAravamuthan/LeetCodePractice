@@ -6,6 +6,7 @@ import java.util.*;
  * @author Aravamuthan Lakshminarayanan
  * @author Bhavana Vakkalagadda
  * @project LeetCodePractice
+ * @link https://leetcode.com/problems/longest-arithmetic-subsequence-of-given-difference/
  */
 public class LongestArithmeticSubSequenceofGivenDifference {
 
