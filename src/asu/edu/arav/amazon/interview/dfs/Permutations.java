@@ -51,4 +51,27 @@ public class Permutations {
             candidatePermutation.remove(candidatePermutation.size()-1);
         }
     }
+    public List<List<Integer>> permute1(int[] nums) {
+        inputNums = nums;
+        backTrack(new ArrayList<>());
+        return ansList;
+    }
+
+    public void backTrack(List<Integer> possiblePermutation){
+        if(possiblePermutation.size() == inputNums.length){
+            ansList.add(new ArrayList<>(possiblePermutation));
+            return;
+        }
+
+        for(int i : inputNums){
+            if(!possiblePermutation.contains(i)){
+                possiblePermutation.add(i);
+                backTrack(possiblePermutation);
+                possiblePermutation.remove(possiblePermutation.size() - 1);
+            }
+        }
+    }
+
+
+
 }

@@ -14,6 +14,7 @@ public class LetterCombinationsOfaPhone {
     List<String> ans = new ArrayList<String>();
     List<Character>[] keyPad = new List[8];
     String digitsG;
+
     {
         List<Character> c = new ArrayList<Character>();
         c.add('a');
@@ -58,13 +59,14 @@ public class LetterCombinationsOfaPhone {
         c.add('z');
         keyPad[6] = c;
     }
+
     public List<String> letterCombinations(String digits) {
-        if(digits == null || digits.length() == 0){
+        if (digits == null || digits.length() == 0) {
             return ans;
         }
         digitsG = digits;
-        List<Character> chList  = keyPad[Character.getNumericValue(digitsG.charAt(0)) - 2];
-        for(char ch : chList){
+        List<Character> chList = keyPad[Character.getNumericValue(digitsG.charAt(0)) - 2];
+        for (char ch : chList) {
             StringBuilder sbCh = new StringBuilder();
             sbCh.append(ch);
             dfs(sbCh);
@@ -72,16 +74,39 @@ public class LetterCombinationsOfaPhone {
         return ans;
     }
 
-    public void dfs(StringBuilder sb){
-        if(sb.length() == digitsG.length()){
+    public void dfs(StringBuilder sb) {
+        if (sb.length() == digitsG.length()) {
             ans.add(sb.toString());
             return;
         }
-        List<Character> chList  = keyPad[Character.getNumericValue(digitsG.charAt(sb.length())) - 2];
-        for(char ch : chList){
+        List<Character> chList = keyPad[Character.getNumericValue(digitsG.charAt(sb.length())) - 2];
+        for (char ch : chList) {
             StringBuilder sbCh = new StringBuilder(sb);
             sbCh.append(ch);
             dfs(sbCh);
         }
     }
+
+    public List<String> letterCombinations1(String digits) {
+        if (digits == null || digits.length() == 0) {
+            return ans;
+        }
+        digitsG = digits;
+        dfs("");
+        return ans;
+    }
+
+
+    public void dfs(String permutation) {
+        if (permutation.length() == digitsG.length()) {
+            ans.add(permutation);
+            return;
+        }
+        List<Character> options = keyPad[digitsG.charAt(permutation.length()) - '0' - 2];
+        for (char c : options) {
+            dfs(permutation + c);
+        }
+    }
+
+
 }
