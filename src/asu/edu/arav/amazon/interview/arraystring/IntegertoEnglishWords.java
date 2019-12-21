@@ -8,6 +8,12 @@ package asu.edu.arav.amazon.interview.arraystring;
  */
 public class IntegertoEnglishWords {
 
+    public static final int BILLION = 1000000000;
+    public static final int MILLION = 1000000;
+    public static final int THOUSAND = 1000;
+    public static final int HUNDREDS = 100;
+
+
     public String handleOnes(int i) {
         switch (i) {
             case 1:
@@ -34,21 +40,21 @@ public class IntegertoEnglishWords {
 
     public String handleTwos(int i) {
         switch (i) {
-            case 20:
+            case 2:
                 return "Twenty";
-            case 30:
+            case 3:
                 return "Thirty";
-            case 40:
+            case 4:
                 return "Forty";
-            case 50:
+            case 5:
                 return "Fifty";
-            case 60:
+            case 6:
                 return "Sixty";
-            case 70:
+            case 7:
                 return "Seventy";
-            case 80:
+            case 8:
                 return "Eighty";
-            case 90:
+            case 9:
                 return "Ninety";
         }
         return "";
@@ -81,16 +87,67 @@ public class IntegertoEnglishWords {
     }
 
 
-    public String two(int i) {
-        return "";
+    public String two(int rest) {
+        StringBuilder res = new StringBuilder();
+        if (rest > 0) {
+            if (rest < 10) {
+                res.append(handleOnes(rest));
+            } else if (rest < 20) {
+                res.append(lessThanTwos(rest));
+            } else {
+                int tenner = rest / 10;
+                res.append(handleTwos(tenner));
+                res.append(" ");
+                rest = rest - tenner * 10;
+                if (rest > 0) {
+                    res.append(handleOnes(rest));
+                }
+            }
+        }
+        return res.toString();
     }
 
     public String three(int i) {
-        return "";
+        StringBuilder res = new StringBuilder();
+        int hundreds = i / 100;
+        if (hundreds > 0) {
+            res.append(handleOnes(hundreds));
+            res.append(" ");
+            res.append("Hundred ");
+        }
+        int rest = i - hundreds * HUNDREDS;
+        res.append(two(rest));
+        return res.toString();
     }
 
     public String numberToWords(int num) {
-        return "";
+        if (num == 0) {
+            return "Zero";
+        }
+        StringBuilder sb = new StringBuilder();
+        int billions = num / BILLION;
+        int millions = (num - billions * BILLION) / MILLION;
+        int thousands = (num - billions * BILLION - millions * MILLION) / THOUSAND;
+        int rest = num - billions * BILLION - millions * MILLION - thousands * THOUSAND;
+        if (billions > 0) {
+            sb.append(three(billions));
+            sb.append(" Billion ");
+        }
+        if (millions > 0) {
+            sb.append(three(millions));
+            sb.append(" Million ");
+        }
+        if (thousands > 0) {
+            sb.append(three(thousands));
+            sb.append(" Thousand ");
+        }
+        sb.append(three(rest));
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        IntegertoEnglishWords i = new IntegertoEnglishWords();
+        i.numberToWords(123);
     }
 
 }
