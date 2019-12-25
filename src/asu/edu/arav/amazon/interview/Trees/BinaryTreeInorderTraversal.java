@@ -1,4 +1,4 @@
-package asu.edu.arav.amazon.interview.bfs;
+package asu.edu.arav.amazon.interview.Trees;
 
 import asu.edu.aravl.utility.TreeNode;
 
