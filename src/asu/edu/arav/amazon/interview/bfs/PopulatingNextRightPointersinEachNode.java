@@ -27,8 +27,6 @@ public class PopulatingNextRightPointersinEachNode {
         }
     }
 
-    ;
-
 
     public Node connect(Node root) {
         if (root == null) {
