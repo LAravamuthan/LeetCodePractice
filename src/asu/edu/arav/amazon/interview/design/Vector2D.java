@@ -8,5 +8,4 @@ package asu.edu.arav.amazon.interview.design;
  */
 public class Vector2D {
 
-
 }
