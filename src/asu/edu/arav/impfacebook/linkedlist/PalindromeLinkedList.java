@@ -30,7 +30,7 @@ public class PalindromeLinkedList {
 
         ListNode node = head;
 
-        while(secondLinkedList != null){
+        while (secondLinkedList != null) {
             if (node.val == secondLinkedList.val) {
                 node = node.next;
                 secondLinkedList = secondLinkedList.next;
@@ -54,12 +54,40 @@ public class PalindromeLinkedList {
 
 
     public static void main(String args[]) {
-        ListNode head = new ListNode(0);
+        /*ListNode head = new ListNode(0);
         head.next = new ListNode(0);
         //head.next.next = new ListNode(2);
         //head.next.next.next = new ListNode(2);
         //head.next.next.next.next = new ListNode(3);
         //head.next.next.next.next.next = new ListNode(1);
-        System.out.println(isPalindrome(head));
+        System.out.println(isPalindrome(head));*/
+
+        if (((1 >> (4 - 1)) &
+                1) == 1)
+            System.out.println("SET");
+        else
+            System.out.println("NOT SET");
+
+        int[] nums1 = new int[5];
+        int maxBitCount = 1;
+        for (int num : nums1) {
+            if(Integer.toBinaryString(num).length() > maxBitCount){
+                maxBitCount = Integer.toBinaryString(num).length();
+            }
+        }
+        int maxCount = 0;
+        for(int i = 0; i < maxBitCount; i++){
+            int count = 0;
+            for(int num : nums1 ){
+                if (((num >> (i)) & 1) == 1) count++;
+            }
+            if(count > maxCount){
+                maxCount = count;
+            }
+        }
+        System.out.println(maxCount);
+
     }
+
+
 }
