@@ -31,4 +31,20 @@ public class BinaryTreeInorderTraversal {
 
         return ansList;
     }
+
+
+    List<Integer> ansList = new ArrayList<>();
+    public List<Integer> inorderTraversal1(TreeNode root) {
+        if (root == null) {
+            return ansList;
+        }
+        if(root.left != null){
+            inorderTraversal1(root.left);
+        }
+        ansList.add(root.val);
+        if(root.right != null){
+            inorderTraversal1(root.right);
+        }
+        return ansList;
+    }
 }

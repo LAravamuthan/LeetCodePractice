@@ -31,17 +31,33 @@ public class MinimumPathSum {
         int[] dp = new int[grid.length];
         for (int j = grid[0].length - 1; j >= 0; j--) {
             for (int i = grid.length - 1; i >= 0; i--) {
-                if(i == grid.length - 1 && j == grid[0].length - 1){
+                if (i == grid.length - 1 && j == grid[0].length - 1) {
                     dp[i] = grid[i][j];
-                }else if(i == grid.length - 1 && j != grid[0].length - 1){
+                } else if (i == grid.length - 1 && j != grid[0].length - 1) {
                     dp[i] = grid[i][j] + dp[i];
-                }else if(i != grid.length - 1 && j == grid[0].length - 1){
-                    dp[i] = grid[i][j] + dp[i+1];
-                }else{
+                } else if (i != grid.length - 1 && j == grid[0].length - 1) {
+                    dp[i] = grid[i][j] + dp[i + 1];
+                } else {
                     dp[i] = grid[i][j] + Math.min(dp[i + 1], dp[i]);
                 }
             }
         }
         return dp[0];
+    }
+
+    public int minPathSum2(int[][] grid) {
+        int[] dp = new int[grid.length];
+        for (int j = 0; j < grid[0].length; j++) {
+            for (int i = 0; i < grid.length; i++) {
+                if (i == 0 && j == 0) dp[i] = grid[i][j];
+                else if (i == 0) dp[i] = grid[i][j] + dp[i];
+                else if (j == 0) dp[i] = grid[i][j] + dp[i - 1];
+                else {
+                    dp[i] = grid[i][j] + Math.min(dp[i - 1], dp[i]);
+                }
+
+            }
+        }
+        return dp[grid.length - 1];
     }
 }
