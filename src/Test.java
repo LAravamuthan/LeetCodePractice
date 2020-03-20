@@ -8,8 +8,13 @@ public class Test {
             System.out.println("Enter the upper bound of the random number");
             Scanner input = new Scanner(System.in);
             int ob = input.nextInt();
-            if (ob > 0) System.out.println(Math.ceil(Math.random() * ob));
-            else break;
+            System.out.println("How Many numbers to be generated");
+            input = new Scanner(System.in);
+            int times = input.nextInt();
+            if (ob > 0) {
+                for (int i = 0; i < times; i++)
+                    System.out.println(Math.ceil(Math.random() * ob));
+            } else break;
         }
     }
 
