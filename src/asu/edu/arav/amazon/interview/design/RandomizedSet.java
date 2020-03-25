@@ -42,7 +42,7 @@ public class RandomizedSet {
         }
         int indexOfToBeDeleted = valToIndexMap.get(val);
         int valAtLastIdx = values.get(values.size() - 1);
-        values.add(indexOfToBeDeleted, valAtLastIdx);
+        values.set(indexOfToBeDeleted, valAtLastIdx);
         valToIndexMap.put(valAtLastIdx, indexOfToBeDeleted);
         valToIndexMap.remove(val);
         values.remove(values.size() - 1);
