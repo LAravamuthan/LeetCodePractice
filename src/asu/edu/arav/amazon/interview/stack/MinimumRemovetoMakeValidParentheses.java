@@ -47,4 +47,36 @@ public class MinimumRemovetoMakeValidParentheses {
         }
         return sb.toString();
     }
+
+    /**
+     * @algo - stack based without a actual stack
+     * @time-complexity - O(n)
+     * @space-complexity - O(1)
+     */
+
+    public String minRemoveToMakeValid1(String s) {
+        if (s == null || s.length() == 0) return s;
+        // l - no. of the unbalanced forward bracket
+        // r - no. of the unbalanced backward bracket
+        int l = 0;
+        int r = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') l++;
+            else if (s.charAt(i) == ')')
+                if (l == 0) r++;
+                else l--;
+        }
+        StringBuilder ans = new StringBuilder();
+
+        for (int i = 0; i < s.length(); i++) {
+            if(s.charAt(i) == '(' && l > 0) l--;
+            else if(s.charAt(i) == ')' && r > 0) r--;
+            else{
+                ans.append(s.charAt(i));
+            }
+        }
+        return ans.toString();
+    }
+
+
 }

@@ -76,4 +76,20 @@ public class TaskScheduler {
 
         return time;
     }
+
+    public int leastInterval3(char[] tasks, int n) {
+        if (n == 0) return tasks.length;
+        int[] charFrequecy = new int[0];
+        for (char task : tasks) {
+            charFrequecy[task - 'A']++;
+        }
+        Arrays.sort(charFrequecy);
+        int maxCoolingFreq = charFrequecy[25] - 1;
+        int idleTime = maxCoolingFreq * n;
+        for (int i = 24; i >= 0 && charFrequecy[i] > 0 && idleTime > 0; i--) {
+            idleTime -= Math.min(charFrequecy[i], maxCoolingFreq);
+        }
+
+        return idleTime > 0 ? idleTime + tasks.length : tasks.length;
+    }
 }

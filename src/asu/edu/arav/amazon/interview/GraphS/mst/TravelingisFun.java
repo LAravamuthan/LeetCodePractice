@@ -1,4 +1,4 @@
-package asu.edu.arav.amazon.interview.mst;
+package asu.edu.arav.amazon.interview.GraphS.mst;
 
 /**
  * @author Aravamuthan Lakshminarayanan
