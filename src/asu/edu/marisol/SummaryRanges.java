@@ -70,7 +70,7 @@ public class SummaryRanges {
     }
 
     /**
-     * This approach is a efficient way of reaching state of change in invariables.
+     * This approach is an efficient way of reaching state of change in invariables.
      * @time-complexity - O (n)
      * @space-complexity - O (n)
      */
