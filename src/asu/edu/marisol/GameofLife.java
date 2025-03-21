@@ -19,6 +19,7 @@ Any dead cell with exactly three live neighbors becomes a live cell, as if by re
      * @time-complexity - O (M * N) length * breadth
      * @space-complexity - O (1)
      */
+    // TODO: Study the graph approach.
     public void gameOfLife(int[][] board) {
 
         int [] dirs = { 1, 0, -1 };

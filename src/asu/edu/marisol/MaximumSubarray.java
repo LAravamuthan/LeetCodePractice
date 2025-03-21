@@ -12,6 +12,7 @@ public class MaximumSubarray {
      * @time-complexity - O (n).
      * @space-complexity - O (1).
      */
+    // TODO: Read the divide and conquer approach.
     public int maxSubArray(int[] nums) {
         if (nums == null || nums.length == 0) return Integer.MIN_VALUE;
         int curProfit = nums[0];
