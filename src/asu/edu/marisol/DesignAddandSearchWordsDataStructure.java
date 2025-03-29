@@ -3,6 +3,10 @@ package asu.edu.marisol;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author Aravamuthan Lakshminarayanan
+ * @project LeetCodePractice
+ */
 public class DesignAddandSearchWordsDataStructure {
 
     class TrieNode {
@@ -42,7 +46,7 @@ public class DesignAddandSearchWordsDataStructure {
     /**
      * Efficient approach, O(n) approach.
      *
-     * @time-complexity - O ().
+     * @time-complexity - O (n).
      * @space-complexity - O (1).
      */
     public DesignAddandSearchWordsDataStructure() {
@@ -68,7 +72,7 @@ public class DesignAddandSearchWordsDataStructure {
                         if (searchInNodes(word.substring(i + 1), eachChild))
                             return true;
                     }
-                } 
+                }
                 return false;
             } else {
                 node = node.getNode(ch);
