@@ -1,5 +1,9 @@
 package asu.edu.marisol;
 
+/**
+ * @author Aravamuthan Lakshminarayanan
+ * @project LeetCodePractice
+ */
 public class ConvertSortedArraytoBinarySearchTree {
 
     public class TreeNode {
@@ -21,6 +25,12 @@ public class ConvertSortedArraytoBinarySearchTree {
         }
     }
 
+    /**
+     * Recursion and binary search concept
+     *
+     * @time-complexity - O (n).
+     * @space-complexity - O (h).
+     */
     public TreeNode sortedArrayToBST(int[] nums) {
         return createNode(nums, 0, nums.length - 1);
     }
