@@ -34,7 +34,7 @@ public class BinaryTreeRightSideView {
     List<Integer> ans = new ArrayList<>();
 
     /**
-     * Trying depth first search
+     * Trying depth first search.
      *
      * @time-complexity - O (n), n-> no. of nodes in the Tree.
      * @space-complexity - O (h) - height of the tree.
@@ -56,7 +56,7 @@ public class BinaryTreeRightSideView {
     }
 
     /**
-     * Trying depth first search
+     * Trying depth first search.
      *
      * @time-complexity - O (n), n-> no. of nodes in the Tree.
      * @space-complexity - O (d) - Diameter of the tree.
