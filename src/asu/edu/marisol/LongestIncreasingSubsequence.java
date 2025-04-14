@@ -5,10 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * DP problem.
- *
- * @time-complexity - O (amount * coins).
- * @space-complexity - O (amount).
+ * @author Aravamuthan Lakshminarayanan
+ * @project LeetCodePractice
  */
 public class LongestIncreasingSubsequence {
 

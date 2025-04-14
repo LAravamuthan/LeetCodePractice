@@ -1,5 +1,9 @@
 package asu.edu.marisol;
 
+/**
+ * @author Aravamuthan Lakshminarayanan
+ * @project LeetCodePractice
+ */
 public class BinaryTreeMaximumPathSum {
 
     public class TreeNode {
@@ -33,21 +37,15 @@ public class BinaryTreeMaximumPathSum {
         return maxSum;
     }
 
-    private Integer maxPathSumDfs(TreeNode node) {
-        if (node == null) return null;
+    private int maxPathSumDfs(TreeNode node) {
+        if (node == null) return 0;
 
-        Integer leftNodePathSum = maxPathSumDfs(node.left);
-        Integer rightNodePathSum = maxPathSumDfs(node.right);
+        int leftNodePathSum = Math.max(maxPathSumDfs(node.left), 0);
+        int rightNodePathSum = Math.max(maxPathSumDfs(node.right), 0);
 
-        int leftTreeBestPathSum = leftNodePathSum != null ? leftNodePathSum : 0;
-        int rightTreeBestPathSum = rightNodePathSum != null ? rightNodePathSum : 0;
-        int bestPathWithNode = Math.max(leftTreeBestPathSum + node.val, node.val + rightTreeBestPathSum);
-        bestPathWithNode = Math.max(bestPathWithNode, node.val);
-        int currentNodePathSum = leftTreeBestPathSum +  rightTreeBestPathSum + node.val;
+        maxSum = Math.max(leftNodePathSum + rightNodePathSum + node.val, maxSum);
 
-        maxSum = Math.max(bestPathWithNode, currentNodePathSum);
-
-        return bestPathWithNode;
+        return Math.max(node.val + leftNodePathSum, rightNodePathSum + node.val);
     }
 
     private int maxSum = Integer.MIN_VALUE;
