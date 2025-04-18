@@ -1,5 +1,9 @@
 package asu.edu.marisol;
 
+/**
+ * @author Aravamuthan Lakshminarayanan
+ * @project LeetCodePractice
+ */
 public class LinkedListCycle {
 
     class ListNode {
@@ -11,6 +15,7 @@ public class LinkedListCycle {
             next = null;
         }
     }
+
     /**
      * Slow and Fast hair approach for finding in Cycle in LinkedList.
      *

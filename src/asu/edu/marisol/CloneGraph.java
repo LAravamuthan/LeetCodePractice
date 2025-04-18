@@ -1,0 +1,114 @@
+package asu.edu.marisol;
+
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+
+/**
+ * @author Aravamuthan Lakshminarayanan
+ * @project LeetCodePractice
+ */
+public class CloneGraph {
+
+    class Node {
+        public int val;
+        public List<Node> neighbors;
+        public Node() {
+            val = 0;
+            neighbors = new ArrayList<>();
+        }
+        public Node(int _val) {
+            val = _val;
+            neighbors = new ArrayList<>();
+        }
+        public Node(int _val, ArrayList<Node> _neighbors) {
+            val = _val;
+            neighbors = _neighbors;
+        }
+    }
+
+    /**
+     * DFS approach.
+     *
+     * @time-complexity - O (N + M) - all the nodes.
+     * @space-complexity - O (n) - all the nodes.
+     */
+    public Node cloneGraph(Node node) {
+        if (node == null) return null;
+
+        this.visited = new HashMap<>();
+        return dfsClone(node);
+    }
+
+    private Map<Node, Node> visited;
+
+    private Node dfsClone(Node node) {
+        if (!visited.containsKey(node)) {
+            visited.put(node, new Node(node.val));
+            for (Node child : node.neighbors) {
+                if (!visited.containsKey(child)) {
+                    visited.put(child, dfsClone(child));
+                }
+                visited.get(node).neighbors.add(visited.get(child));
+            }
+        }
+
+        return visited.get(node);
+    }
+
+
+    /**
+     * DFS approach.
+     *
+     * @time-complexity - O (N + M) - all the nodes.
+     * @space-complexity - O (n) - all the nodes.
+     */
+    public Node cloneGraph2(Node node) {
+        if (node == null) return node;
+        if (visited2.containsKey(node)) return visited2.get(node);
+
+        Node clonedNode = new Node(node.val);
+        visited2.put(node, clonedNode);
+
+        for (Node child : node.neighbors) {
+            clonedNode.neighbors.add(cloneGraph2(child));
+        }
+        return visited2.get(node);
+    }
+
+    private Map<Node, Node> visited2 = new HashMap<>();
+
+
+    /**
+     * BFS approach.
+     *
+     * @time-complexity - O (N + M) - all the nodes.
+     * @space-complexity - O (N) - all the nodes.
+     */
+    public Node cloneGraph3(Node node) {
+        if (node == null) return node;
+
+        Map<Node, Node> visited = new HashMap<>();
+
+        Queue<Node> queue = new ArrayDeque<>();
+        queue.add(node);
+
+        visited.put(node, new Node(node.val));
+
+        while(!queue.isEmpty()) {
+            Node n = queue.remove();
+            for (Node child : n.neighbors) {
+                if(!visited.containsKey(child)) {
+                    visited.put(child, new Node(child.val));
+                    queue.add(child);
+                }
+                visited.get(n).neighbors.add(visited.get(child));
+            }
+        }
+
+        return visited.get(node);
+    }
+}

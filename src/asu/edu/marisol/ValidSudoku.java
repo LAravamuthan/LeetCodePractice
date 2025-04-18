@@ -9,7 +9,8 @@ import java.util.HashSet;
 public class ValidSudoku {
 
     /**
-     * Bit Manipulation approach is pending here, do that ASAP.
+     * TODO: Bit Manipulation approach is pending here, do that ASAP.
+     *
      * @time-complexity - O (n^2)
      * @space-complexity - O (n^2)
      */
