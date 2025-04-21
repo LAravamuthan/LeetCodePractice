@@ -21,9 +21,6 @@ public class LowestCommonAncestorofaBinaryTree {
       TreeNode(int x) { val = x; }
     }
 
-
-
-
     TreeNode lca = null;
     TreeNode p;
     TreeNode q;
