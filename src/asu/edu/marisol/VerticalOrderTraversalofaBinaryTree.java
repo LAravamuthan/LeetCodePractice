@@ -113,7 +113,6 @@ public class VerticalOrderTraversalofaBinaryTree {
             }
         }
 
-
         List<List<Integer>> result = new ArrayList<>();
 
         while (!pq.isEmpty()) {

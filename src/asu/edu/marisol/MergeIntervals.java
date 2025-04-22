@@ -12,6 +12,8 @@ public class MergeIntervals {
     /**
      * Sort by the start idx of the interval.
      *
+     * TODO: Graph implementation.
+     *
      * @time-complexity - O (nlogn), n-> no. of intervals.
      * @space-complexity - O (n) - height of the tree.
      */

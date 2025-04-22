@@ -16,7 +16,7 @@ import java.util.Set;
 public class ThreeSum {
 
     /**
-     *  sort and twoSum II, O(nlogn + n^2).
+     * Sort and twoSum II, O(nlogn + n^2).
      *
      * @time-complexity - O(nlogn + n^2).
      * @space-complexity - O(n).
