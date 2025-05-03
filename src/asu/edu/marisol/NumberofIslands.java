@@ -102,4 +102,94 @@ public class NumberofIslands {
         return noIsLands;
     }
 
+    class DSU {
+        int[] parents;
+        int[] ranks;
+        int count;
+
+        public DSU(char[][] grid) {
+            int nr = grid.length;
+            int nc = grid[0].length;
+
+            parents = new int[nr * nc];
+            ranks = new int[nr * nc];
+            count = 0;
+
+            for (int i = 0; i < nr; i++) {
+                for (int j = 0; j < nc; j++) {
+                    if (grid[i][j] == '1') {
+                        parents[nc * i + j] = nc * i + j;
+                        ranks[nc * i + j] = 1;
+                        count++;
+                    }
+                }
+            }
+        }
+
+        public int find(int x) {
+            if (x == parents[x]) return x;
+
+            // path compression.
+            return parents[x] = find(parents[x]);
+        }
+
+        public void union(int x, int y) {
+            int rootX = find(x);
+            int rootY = find(y);
+
+            if (rootX != rootY) {
+                if (ranks[x] > ranks[y]) {
+                    parents[rootY] = rootX;
+                } else if (ranks[x] < ranks[y]) {
+                    parents[rootX] = rootY;
+                } else {
+                    ranks[x] += 1;
+                    parents[rootX] = rootY;
+                }
+                count--;
+            }
+        }
+
+        public int getCount() {
+            return count;
+        }
+    }
+
+    /**
+     * Union Find approach.
+     *
+     * @time-complexity - O (N*M).
+     * @space-complexity - O (N*M).
+     */
+    public int numIslands3(char[][] grid) {
+
+        DSU dsu = new DSU(grid);
+
+        int nr = grid.length;
+        int nc = grid[0].length;
+
+        for (int r = 0; r < nr; r++) {
+            for (int c = 0; c < nc; c++) {
+                if (grid[r][c] == '1') {
+                    grid[r][c] = '0';
+                    if (r - 1 >= 0 && grid[r - 1][c] == '1') {
+                        dsu.union(r * nc + c, (r - 1) * nc + c);
+                    }
+                    if (r + 1 < nr && grid[r + 1][c] == '1') {
+                        dsu.union(r * nc + c, (r + 1) * nc + c);
+                    }
+                    if (c - 1 >= 0 && grid[r][c - 1] == '1') {
+                        dsu.union(r * nc + c, r * nc + c - 1);
+                    }
+                    if (c + 1 < nc && grid[r][c + 1] == '1') {
+                        dsu.union(r * nc + c, r * nc + c + 1);
+                    }
+                }
+            }
+        }
+
+        return dsu.getCount();
+    }
+
+
 }

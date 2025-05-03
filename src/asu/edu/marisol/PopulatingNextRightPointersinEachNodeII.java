@@ -63,4 +63,36 @@ public class PopulatingNextRightPointersinEachNodeII {
         prev = node;
     }
 
+
+    /**
+     * Smart O(1) space complexity code practice.
+     *
+     * @time-complexity - O (n).
+     * @space-complexity - O (1).
+     */
+    public Node connect2(Node root) {
+
+        if (root == null) return null;
+        leftMost = root;
+        while (leftMost != null) {
+            Node cur = leftMost;
+            leftMost = null;
+            prev = null;
+
+            while (cur != null) {
+                if (cur.left != null) processNode2(cur.left);
+                if (cur.right != null) processNode2(cur.right);
+                cur = cur.next;
+            }
+        }
+
+        return root;
+    }
+
+    private void processNode2(Node node) {
+        if (prev != null) prev.next = node;
+        if (leftMost == null) leftMost = node;
+        prev = node;
+    }
+
 }

@@ -53,6 +53,7 @@ public class FlattenBinaryTreetoLinkedList {
     /**
      * Flatten the binary using iteration, Morris traversal.
      * TODO: Read morris traversal again
+     * TODO: Stack approach read karo.
      *
      * @time-complexity - O (N), no. of nodes.
      * @space-complexity - O (1)
@@ -76,6 +77,54 @@ public class FlattenBinaryTreetoLinkedList {
 
             // move to right side of the tree
             node = node.right;
+        }
+    }
+
+    /**
+     * Flatten the binary using recursion my own idea lets see it works or not.
+     *
+     * @time-complexity - O (N), no. of nodes.
+     * @space-complexity - O (N)
+     */
+    public void flatten3(TreeNode root) {
+        this.dummyHead = new TreeNode();
+        this.prev = dummyHead;
+        flattenNode2(root);
+    }
+    private TreeNode dummyHead;
+    private TreeNode prev;
+
+    private void flattenNode2(TreeNode node) {
+        if (node == null) return;
+
+        prev.right = node;
+        prev = prev.right;
+        TreeNode left = node.left;
+        TreeNode right = node.right;
+        flattenNode2(left);
+        flattenNode2(right);
+    }
+
+
+
+    /**
+     * Flatten the binary using iteration, Morris traversal  Practice.
+     * TODO: Read morris traversal again
+     *
+     * @time-complexity - O (N), no. of nodes.
+     * @space-complexity - O (1)
+     */
+    public void flatten4(TreeNode root) {
+
+        while (root != null) {
+            if (root.left != null) {
+                TreeNode pred = root.left;
+                while (pred.right != null) pred = pred.right;
+                pred.right = root.right;
+                root.right = root.left;
+                root.left = null;
+            }
+            root = root.right;
         }
     }
 

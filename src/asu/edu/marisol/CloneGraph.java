@@ -111,4 +111,59 @@ public class CloneGraph {
 
         return visited.get(node);
     }
+
+    /**
+     * DFS approach.
+     *
+     * @time-complexity - O (N + M) - all the nodes.
+     * @space-complexity - O (N) - all the nodes.
+     */
+    public Node cloneGraph4(Node node) {
+        if (node == null) return null;
+
+        if (visitedNodeMap.containsKey(node)) return visitedNodeMap.get(node);
+
+        Node newNode = new Node(node.val);
+        visitedNodeMap.put(node, newNode);
+
+        for (Node neighbor : node.neighbors) {
+            newNode.neighbors.add(cloneGraph4(neighbor));
+        }
+
+        return visitedNodeMap.get(node);
+    }
+
+    private Map<Node, Node> visitedNodeMap = new HashMap<>();
+
+
+
+    /**
+     * BFS approach.
+     *
+     * @time-complexity - O (N + M) - all the nodes.
+     * @space-complexity - O (N) - all the nodes.
+     */
+    public Node cloneGraph5(Node node) {
+        if (node == null) return null;
+        Map<Node, Node> visitedNodeMap = new HashMap<>();
+
+        Queue<Node> queue = new ArrayDeque<>();
+
+        visitedNodeMap.put(node, new Node(node.val));
+        queue.add(node);
+
+        while (!queue.isEmpty()) {
+            Node toClone = queue.poll();
+
+            for (Node neighbor : toClone.neighbors) {
+                if (!visitedNodeMap.containsKey(neighbor)) {
+                    visitedNodeMap.put(neighbor, new Node(neighbor.val));
+                    queue.add(neighbor);
+                }
+                visitedNodeMap.get(toClone).neighbors.add(visitedNodeMap.get(neighbor));
+            }
+        }
+
+        return visitedNodeMap.get(node);
+    }
 }

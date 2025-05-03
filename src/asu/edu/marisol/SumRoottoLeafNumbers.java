@@ -138,4 +138,53 @@ public class SumRoottoLeafNumbers {
     }
 
 
+
+    /**
+     * Binary morris traversal.
+     *
+     * @time-complexity - O(N).
+     * @space-complexity - O(1).
+     */
+    public int sumNumbers4(TreeNode root) {
+        int rootToLeaf = 0, curNumber = 0;
+        int steps; TreeNode predecessor;
+
+        while (root != null) {
+            if (root.left != null) {
+                predecessor = root.left;
+                steps = 1;
+
+                // find the inoder predecessor
+                while (predecessor.right != null && predecessor.right != root) {
+                    predecessor = predecessor.right;
+                    steps++;
+                }
+
+                // first time the back egde has been made, safely traverse the left subtree
+                if (predecessor.right == null) {
+                    curNumber = curNumber * 10 + root.val;
+                    predecessor.right = root;
+                    root = root.left;
+                } else {
+                    // condition for leaf
+                    if (predecessor.left == null) {
+                        rootToLeaf += curNumber;
+                    }
+
+                    // take back the steps we had to do to get curNumber for the node.
+                    for (int i = 0; i < steps; i++) curNumber /= 10;
+
+                    // go to right subtree
+                    root = root.right;
+                }
+            } else {
+                curNumber = curNumber * 10 + root.val;
+                if (root.right == null) rootToLeaf += curNumber;
+                root = root.right;
+            }
+        }
+
+        return rootToLeaf;
+    }
+
 }
