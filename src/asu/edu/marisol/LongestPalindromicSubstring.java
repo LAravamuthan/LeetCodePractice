@@ -7,7 +7,8 @@ package asu.edu.marisol;
 public class LongestPalindromicSubstring {
 
     /**
-     * Expanding from middle algorithm, nice for the the interview method.
+     * Expanding from middle algorithm, nice for the interview method.
+     * TODO: Manachar's algo.
      *
      * @time-complexity - O (n^2).
      * @space-complexity - O (1).
@@ -81,5 +82,47 @@ public class LongestPalindromicSubstring {
         }
 
         return s.substring(ans[0], ans[1] + 1);
+    }
+
+
+    /**
+     * Expanding from middle algorithm, nice for the interview method practice.
+     *
+     * @time-complexity - O (n^2).
+     * @space-complexity - O (1).
+     */
+    public String longestPalindrome3(String s) {
+        int[] res = {0, 0};
+
+        for (int i = 0; i < s.length(); i++) {
+
+            // for oddLength
+            int oddLength = expandAndFindPalindrome(i, i, s);
+            if (oddLength > res[1] - res[0] + 1) {
+                int dist = oddLength / 2;
+                res[0] = i - dist;
+                res[1] = i + dist;
+            }
+
+            // for evenLength
+            int evenLength = expandAndFindPalindrome(i, i + 1, s);
+            if (evenLength > res[1] - res[0] + 1) {
+                int dist = oddLength / 2;
+                res[0] = i - dist + 1;
+                res[1] = i + dist;
+            }
+        }
+
+
+        return s.substring(res[0], res[1] + 1);
+    }
+
+    private int expandAndFindPalindrome(int left, int right, String s) {
+
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            left--; right++;
+        }
+
+        return right - left - 1;
     }
 }

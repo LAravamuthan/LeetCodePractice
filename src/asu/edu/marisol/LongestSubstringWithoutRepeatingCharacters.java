@@ -10,7 +10,7 @@ import java.util.Map;
 public class LongestSubstringWithoutRepeatingCharacters {
 
     /**
-     * Sliding window approach with hashMap as extra space.
+     * Sliding window approach with hashMap as extra space and count as values.
      *
      * @time-complexity - O (2n), given we might move on idx twice.
      * @space-complexity - O (min(k, n)), where k no. of unique characters (max of 26) and n no. of characters.
@@ -57,6 +57,28 @@ public class LongestSubstringWithoutRepeatingCharacters {
             res = Math.max(res, right - left + 1);
             right++;
         }
+        return res;
+    }
+
+
+    /**
+     * Sliding window approach with hashMap as extra space, practice for index as values.
+     *
+     * @time-complexity - O (n), efficient sliding window.
+     * @space-complexity - O (min(k, n)), where k no. of unique characters (max of 26) and n no. of characters.
+     */
+    public int lengthOfLongestSubstring3(String s) {
+        int left = 0, right = 0, res = 0;
+        Map<Character, Integer> map = new HashMap<>();
+
+        while (right < s.length()) {
+            char ch = s.charAt(right);
+            if (map.containsKey(ch)) left = Math.max(left, map.get(ch) + 1);
+            map.put(ch, right);
+            res = Math.max(res, right - left + 1);
+            right++;
+        }
+
         return res;
     }
 }
