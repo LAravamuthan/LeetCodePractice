@@ -144,4 +144,130 @@ public class AccountsMerge {
         return mergedAccounts;
     }
 
+
+    /**
+     * This is a real ringer, since it has to be approached in Graph way, lets see how it goes now.
+     * Graph DFS approach this time around, lets go with it.
+     * Practice.
+     *
+     * @time-complexity - O (NK Log NK).
+     * @space-complexity - O (NK).
+     */
+    public List<List<String>> accountsMerge3(List<List<String>> accounts) {
+        this.visited = new ArrayList<>();
+        this.adjEdges = new HashMap<>();
+
+        for (List<String> accountContent : accounts) {
+            String firstEmail = accountContent.get(1);
+            for (int i = 2; i < accountContent.size(); i++) {
+                String email = accountContent.get(i);
+                adjEdges.computeIfAbsent(firstEmail, k-> new ArrayList<>()).add(email);
+                adjEdges.computeIfAbsent(email, k-> new ArrayList<>()).add(firstEmail);
+            }
+        }
+
+        List<List<String>> ans = new ArrayList<>();
+        for (List<String> accountContent : accounts) {
+            String accountName = accountContent.get(0);
+            String firstEmail = accountContent.get(1);
+            if (!visited.contains(firstEmail)) {
+                List<String> mergedAccounts = new ArrayList<>();
+                mergedAccounts.add(accountName);
+                dfsMerge(mergedAccounts, firstEmail);
+                Collections.sort(mergedAccounts.subList(1, mergedAccounts.size()));
+                ans.add(mergedAccounts);
+            }
+        }
+
+        return ans;
+    }
+
+    private void dfsMerge(List<String> mergedAccounts, String email) {
+        visited.add(email);
+        mergedAccounts.add(email);
+
+        for (String neighborEmail : adjEdges.getOrDefault(email, new ArrayList<>())) {
+            if (!visited.contains(neighborEmail))
+                dfs(mergedAccounts, neighborEmail);
+        }
+    }
+
+    class Dsu {
+        int[] parents;
+        int[] sizes;
+
+        public Dsu(int n) {
+            this.parents = new int[n];
+            this.sizes = new int[n];
+
+            for (int i = 0; i < n; i++) {
+                parents[i] = i;
+                sizes[i] = 1;
+            }
+        }
+
+        public int findParent(int x) {
+            if (parents[x] == x) return x;
+
+            // Path compression awesome.
+            return parents[x] = findParent(parents[x]);
+        }
+
+        public void unionBySize(int x, int y) {
+            int parentX = findParent(x);
+            int parentY = findParent(y);
+
+            if (parentX != parentY) {
+                if (sizes[parentX] >= sizes[parentY]) {
+                    parents[parentY] = parentX;
+                    sizes[parentX] += sizes[parentY];
+                } else {
+                    parents[parentX] = parentY;
+                    sizes[parentY] += sizes[parentX];
+                }
+            }
+        }
+    }
+
+    /**
+     * Union-find approach, difficult to implement given it is something I am doing after long time.
+     * Practice.
+     *
+     * @time-complexity - O (NK Log NK).
+     * @space-complexity - O (NK).
+     */
+    public List<List<String>> accountsMerge4(List<List<String>> accounts) {
+        int n = accounts.size();
+
+        Dsu dsu = new Dsu(n);
+        Map<String, Integer> emailByGroup = new HashMap<>();
+
+        for (int i = 0; i < accounts.size(); i++) {
+            for (int j = 1; j < accounts.get(i).size(); j++){
+                String email = accounts.get(i).get(j);
+                if (!emailByGroup.containsKey(email)) emailByGroup.put(email, i);
+                else dsu.unionBySize(i, emailByGroup.get(email));
+            }
+        }
+
+        // Making group wise components, note do not make components with accountName, given different accounts can have
+        // same name.
+        Map<Integer, List<String>> groupToEmails = new HashMap<>();
+        for (String email : emailByGroup.keySet()) {
+            int rootGroup = dsu.findParent(emailByGroup.get(email));
+            groupToEmails.computeIfAbsent(rootGroup, k -> new ArrayList<>()).add(email);
+        }
+
+        // final answer.
+        List<List<String>> mergedAccounts = new ArrayList<>();
+        for (int group : groupToEmails.keySet()) {
+            String accountName = accounts.get(group).get(0);
+            Collections.sort(groupToEmails.get(group));
+            groupToEmails.get(group).add(0, accountName);
+            mergedAccounts.add(groupToEmails.get(group));
+        }
+
+        return mergedAccounts;
+    }
+
 }

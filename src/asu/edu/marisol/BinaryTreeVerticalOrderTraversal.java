@@ -5,6 +5,7 @@ import javafx.util.Pair;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -81,7 +82,6 @@ public class BinaryTreeVerticalOrderTraversal {
         dfs(node.left, row + 1, col - 1);
         dfs(node.right, row + 1, col + 1);
     }
-
     
     /**
      * Trying breadth first search.
@@ -124,4 +124,87 @@ public class BinaryTreeVerticalOrderTraversal {
 
         return result;
     }
+
+    /**
+     * Trying depth first search.
+     *
+     * @time-complexity - O (n).
+     * @space-complexity - O (h).
+     */
+    public List<List<Integer>> verticalOrder3(TreeNode root) {
+        this.minCol = Integer.MAX_VALUE;
+        this.maxCol = Integer.MIN_VALUE;
+        this.colMap = new HashMap<>();
+
+        dfsTraversal(root, 0, 0);
+
+        List<List<Integer>> ans = new ArrayList<>();
+
+        for (int i = minCol; i <= maxCol; i++) {
+            List<int[]> rowElements = colMap.get(i);
+            Collections.sort(rowElements, Comparator.comparingInt(a -> a[0]));
+            List<Integer> rowSortedElements = new ArrayList<>();
+            for (int [] element : rowElements) rowSortedElements.add(element[1]);
+            ans.add(rowSortedElements);
+        }
+
+        return ans;
+    }
+
+    private Map<Integer, List<int[]>> colMap;
+
+    private void dfsTraversal(TreeNode node, int row, int col) {
+        if (node == null) return;
+
+        minCol = Math.min(col, minCol);
+        maxCol = Math.max(col, maxCol);
+
+        colMap.computeIfAbsent(col, k -> new ArrayList<>()).add(new int[] { row, node.val });
+        dfsTraversal(node.left, row + 1, col - 1);
+        dfsTraversal(node.left, row + 1, col + 1);
+    }
+
+
+    /**
+     * Trying breadth first search.
+     *
+     * @time-complexity - O (n).
+     * @space-complexity - O (n).
+     */
+    public List<List<Integer>> verticalOrder4(TreeNode root) {
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        Map<Integer, List<Integer>> colMap = new HashMap<>();
+        List<List<Integer>> ans = new ArrayList<>();
+
+        if (root == null) return ans;
+
+        Queue<Pair<Integer, TreeNode>> queue = new ArrayDeque<>();
+
+        queue.add(new Pair<>(0, root));
+
+        while (!queue.isEmpty()) {
+            Pair<Integer, TreeNode> pairNode = queue.poll();
+
+            int col = pairNode.getKey();
+            min = Math.min(min, col);
+            max = Math.min(max, col);
+
+            TreeNode node = pairNode.getValue();
+            colMap.computeIfAbsent(col, k -> new ArrayList<>()).add(node.val);
+
+            if (node.left != null)
+                queue.offer(new Pair<>(col - 1, node.left));
+            if (node.right != null)
+                queue.offer(new Pair<>(col + 1, node.right));
+        }
+
+        for (int i = min; i <= max; i++) {
+            ans.add(colMap.get(i));
+        }
+
+        return ans;
+    }
+
+
 }

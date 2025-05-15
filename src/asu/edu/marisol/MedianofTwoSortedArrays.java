@@ -17,7 +17,7 @@ public class MedianofTwoSortedArrays {
         p1 = 0;
         p2 = 0;
         int firstMedian = 0;
-        for (int i = 0; i < (m + n)/2; i++) {
+        for (int i = 0; i < (m + n) / 2; i++) {
             firstMedian = getMin(nums1, nums2);
         }
 
@@ -74,5 +74,40 @@ public class MedianofTwoSortedArrays {
             else l = mid + 1;
 
         }
+    }
+
+
+    /**
+     * Find median using normal access technique, easier to conceptualize and wont be easy to implement.
+     * Practice.
+     * TODO: Binary search variation.
+     *
+     * @time-complexity - O(Log(min(n,m))).
+     * @space-complexity - O (1).
+     */
+    public double findMedianSortedArrays3(int[] nums1, int[] nums2) {
+        if (nums1.length > nums2.length) return findMedianSortedArrays3(nums2, nums1);
+        int m = nums1.length, n = nums2.length;
+        int half = (m + n) / 2;
+        int l = 0, r = m;
+
+        while (l <= r) {
+            int mid = l + (r - l) / 2;
+
+            int aLeft = mid - 1 >= 0 ? nums1[mid - 1] : Integer.MIN_VALUE;
+            int bLeft = half - mid - 1 >= 0 ? nums2[half - mid - 1] : Integer.MIN_VALUE;
+            int aRight = mid < m ? nums1[mid] : Integer.MAX_VALUE;
+            int bRight = half - mid < n ? nums2[half - mid] : Integer.MAX_VALUE;
+
+            if (aLeft <= bRight && bLeft <= aRight) {
+                if ((m + n) % 2 == 0) return (Math.max(aLeft, bLeft) + Math.min(aRight, bRight)) / 2.0;
+                return Math.min(aRight, bRight);
+            }
+
+            if (aLeft > bRight) r = mid - 1;
+            else l = mid + 1;
+        }
+
+        return -1;
     }
 }

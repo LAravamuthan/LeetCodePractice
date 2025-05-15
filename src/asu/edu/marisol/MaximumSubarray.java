@@ -7,7 +7,7 @@ package asu.edu.marisol;
 public class MaximumSubarray {
 
     /**
-     * Efficient DP IMO, which constant time extra time and line time complexity.
+     * Efficient DP IMO, which constant time extra space and linear time complexity.
      *
      * @time-complexity - O (n).
      * @space-complexity - O (1).
