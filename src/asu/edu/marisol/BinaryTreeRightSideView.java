@@ -1,6 +1,7 @@
 package asu.edu.marisol;
 
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -91,5 +92,68 @@ public class BinaryTreeRightSideView {
         }
 
         return rightView;
+    }
+
+    /**
+     * Trying depth first search.
+     *
+     * @time-complexity - O (n), n-> no. of nodes in the Tree.
+     * @space-complexity - O (h) - height of the tree.
+     */
+    public List<Integer> rightSideView3(TreeNode root) {
+        this.rightSideView = new ArrayList<>();
+        dfsRightSideView(root, 0);
+        return this.rightSideView;
+    }
+
+    private List<Integer> rightSideView;
+
+    private void dfsRightSideView(TreeNode node, int level) {
+        if (node == null) return;
+        if (level == rightSideView.size()) rightSideView.add(node.val);
+        dfsRightSideView(node.right, level + 1);
+        dfsRightSideView(node.left, level + 1);
+    }
+
+
+    /**
+     * Trying BFS first search with null as Sentinel.
+     *
+     * @time-complexity - O (n), n-> no. of nodes in the Tree.
+     * @space-complexity - O (h) - height of the tree.
+     */
+    public List<Integer> rightSideView4(TreeNode root) {
+        List<Integer> rightSide = new ArrayList<>();
+        if (root == null) return rightSide;
+
+        Queue<TreeNode> q = new LinkedList<>();
+        q.offer(root);
+        q.offer(null);
+        TreeNode cur = null, prev;
+
+        while (!q.isEmpty()) {
+            // assigning null for the first element I guess.
+            prev = cur;
+
+            // First element of each level
+            cur = q.poll();
+
+            // Level traversal till we reach the null sentinel.
+            while (cur != null) {
+                rightSide.add(cur.val);
+                if (cur.left != null) q.offer(cur.left);
+                if (cur.right != null) q.offer(cur.right);
+                prev = cur;
+                cur = q.poll();
+            }
+
+            rightSide.add(prev.val);
+
+            // adding `null` sentinel for next to be traversed.
+            if (!q.isEmpty()) q.offer(null);
+
+        }
+
+        return rightSide;
     }
 }

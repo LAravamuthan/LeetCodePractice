@@ -28,6 +28,7 @@ public class CountCompleteTreeNodes {
     /**
      * Lets do the binary search variation, nice logrithmic answer TBH
      *
+     * TODO: binary search candidate.
      * @time-complexity - O (log^2 d).
      * @space-complexity - O (1)
      */

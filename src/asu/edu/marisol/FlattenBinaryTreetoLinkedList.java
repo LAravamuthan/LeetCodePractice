@@ -128,4 +128,31 @@ public class FlattenBinaryTreetoLinkedList {
         }
     }
 
+
+    /**
+     * Flatten the binary using recursion.
+     * Practice.
+     *
+     * @time-complexity - O (N), no. of nodes.
+     * @space-complexity - O (N)
+     */
+    public void flatten5(TreeNode root) {
+        flattenNodeTail(root);
+    }
+
+    private TreeNode flattenNodeTail(TreeNode node) {
+        if (node == null) return null;
+
+        TreeNode leftTail = flattenNodeTail(node.left);
+        TreeNode rightTail = flattenNodeTail(node.right);
+
+        if (leftTail != null) {
+            leftTail.right = node.right;
+            node.right = node.left;
+            node.left = null;
+        }
+
+        return rightTail == null ? leftTail : rightTail;
+    }
+
 }

@@ -50,4 +50,27 @@ public class BinaryTreeMaximumPathSum {
 
     private int maxSum = Integer.MIN_VALUE;
 
+    /**
+     * Doing with DFS method.
+     *
+     * @time-complexity - O(n).
+     * @space-complexity - O(h) height of the tree.
+     */
+    public int maxPathSum2(TreeNode root) {
+        dfsMax(root);
+        return max;
+    }
+
+    private int max = Integer.MIN_VALUE;
+
+    private int dfsMax(TreeNode node) {
+        if (node == null) return 0;
+
+        int leftMax = Math.max(dfsMax(node.left), 0);
+        int rightMax = Math.max(dfsMax(node.right), 0);
+        max = Math.max(max, leftMax + rightMax + node.val);
+
+        return Math.max(leftMax + node.val, rightMax + node.val);
+    }
+
 }

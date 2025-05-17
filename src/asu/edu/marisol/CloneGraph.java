@@ -3,9 +3,11 @@ package asu.edu.marisol;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
+import java.util.Set;
 
 /**
  * @author Aravamuthan Lakshminarayanan
@@ -135,8 +137,6 @@ public class CloneGraph {
 
     private Map<Node, Node> visitedNodeMap = new HashMap<>();
 
-
-
     /**
      * BFS approach.
      *
@@ -165,5 +165,60 @@ public class CloneGraph {
         }
 
         return visitedNodeMap.get(node);
+    }
+
+    /**
+     * BFS approach, practice.
+     *
+     * @time-complexity - O (N + M) - all the nodes.
+     * @space-complexity - O (N) - all the nodes.
+     */
+    public Node cloneGraph6(Node node) {
+        if (node == null) return null;
+
+        Map<Node, Node> cloneMap = new HashMap<>();
+
+        Queue<Node> q = new ArrayDeque<>();
+        q.offer(node);
+        cloneMap.put(node, new Node(node.val));
+
+        while (!q.isEmpty()) {
+            Node curNode = q.poll();
+
+            for (Node child : curNode.neighbors) {
+                if (!cloneMap.containsKey(child)) {
+                    cloneMap.put(child, new Node(child.val));
+                    q.offer(child);
+                }
+                cloneMap.get(curNode).neighbors.add(cloneMap.get(child));
+            }
+        }
+
+        return cloneMap.get(node);
+    }
+
+
+    /**
+     * DFS approach, practice.
+     *
+     * @time-complexity - O (N + M) - all the nodes.
+     * @space-complexity - O (N) - all the nodes.
+     */
+    public Node cloneGraph7(Node node) {
+        Map<Node, Node> cloneGraph = new HashMap<>();
+        dfsClone(node, cloneGraph);
+        return cloneGraph.get(node);
+    }
+
+    private void dfsClone(Node node, Map<Node, Node> cloneGraph) {
+        if (node == null) return;
+        if (cloneGraph.containsKey(node)) return;
+
+        cloneGraph.put(node, new Node(node.val));
+        for (Node child : node.neighbors) {
+            if (!cloneGraph.containsKey(child))
+                dfsClone(child, cloneGraph);
+            cloneGraph.get(node).neighbors.add(cloneGraph.get(child));
+        }
     }
 }

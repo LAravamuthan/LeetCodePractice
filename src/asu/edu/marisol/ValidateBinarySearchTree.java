@@ -1,5 +1,7 @@
 package asu.edu.marisol;
 
+import apple.laf.JRSUIUtils;
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Stack;
@@ -109,7 +111,7 @@ public class ValidateBinarySearchTree {
 
 
     /**
-     * Iterative approach.
+     * Iterative approach with previous element.
      *
      * @time-complexity - O (N), number of nodes in the tree.
      * @space-complexity - O (N) - height of the tree.
@@ -131,5 +133,84 @@ public class ValidateBinarySearchTree {
         }
         return true;
     }
+
+    /**
+     * Recursive limits approach.
+     * Practice.
+     *
+     * @time-complexity - O (N), number of nodes in the tree.
+     * @space-complexity - O (N) - height of the tree.
+     */
+    public boolean isValidBST6(TreeNode root) {
+        return dfsCheck(root, null, null);
+    }
+
+    private boolean dfsCheck(TreeNode node, Integer low, Integer high) {
+        if (node == null) return true;
+        if ((low != null && node.val <= low) || (high != null && node.val >= high)) return false;
+
+        return dfsCheck(node.left, low, node.val) && dfsCheck(node.right, node.val, high);
+    }
+
+
+    /**
+     * Iterative limits approach.
+     * Practice.
+     *
+     * @time-complexity - O (N), number of nodes in the tree.
+     * @space-complexity - O (N) - height of the tree.
+     */
+    public boolean isValidBST7(TreeNode root) {
+        if (root == null) return true;
+
+        this.st = new Stack<>();
+        this.lows = new Stack<>();
+        this.highs = new Stack<>();
+
+        updateStacks(root, null,null);
+
+        while (!st.isEmpty()) {
+            TreeNode node = st.pop();
+            Integer low = lows.pop();
+            Integer high = highs.pop();
+
+            if ((low != null && node.val <= low) || (high != null && node.val >= high)) return false;
+            if (node.left != null) updateStacks(node.left, low, node.val);
+            if (node.right != null) updateStacks(node.right, node.val, high);
+        }
+
+        return true;
+    }
+
+    private void updateStacks(TreeNode node, Integer low, Integer high) {
+        st.push(node);
+        lows.push(low);
+        highs.push(high);
+    }
+
+    private Stack<TreeNode> st;
+    private Stack<Integer> lows;
+    private Stack<Integer> highs;
+
+
+    /**
+     * DFS approach, using prev element to check the validity, slightly different than traditional approach.
+     * Practice.
+     *
+     * @time-complexity - O (N), number of nodes in the tree.
+     * @space-complexity - O (N) - height of the tree.
+     */
+    public boolean isValidBST8(TreeNode root) {
+        return inOrderCheck(root);
+    }
+
+    private boolean inOrderCheck(TreeNode node) {
+        if (node == null) return true;
+        if (!inOrderCheck(node.left)) return false;
+        if (prev != null || node.val <= prev) return false;
+        prev = node.val;
+        return inOrderCheck(node.right);
+    }
+
 
 }
