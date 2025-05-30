@@ -74,5 +74,5 @@ public class MaximumLevelSumofaBinaryTree {
 
         return maxLevel;
     }
-    
+
 }

@@ -52,4 +52,48 @@ public class FindMedianfromDataStream {
             return (minHeap.peek() + maxHeap.peek()) / 2.0;
         } else return minHeap.peek();
     }
+
+
+
+    /**
+     * Two heap approach.
+     *
+     * @time-complexity - O (long).
+     * @space-complexity - O (k).
+     */
+    public void addNum1(int num) {
+        if (minHeap.size() == 0)
+            minHeap.add(num);
+        else if (minHeap.size() == maxHeap.size()) {
+            if (num < maxHeap.peek()) {
+                int numMove = maxHeap.poll();
+                maxHeap.offer(num);
+                minHeap.offer(numMove);
+            } else
+                minHeap.offer(num);
+        }
+        else {
+            if (num > minHeap.peek()) {
+                int numMove = minHeap.poll();
+                minHeap.offer(num);
+                maxHeap.offer(numMove);
+            } else
+                maxHeap.offer(num);
+        }
+    }
+
+    /**
+     * Two heap approach.
+     *
+     * @time-complexity - O (1).
+     * @space-complexity - O (1).
+     */
+    public double findMedian2() {
+        if (minHeap.size() == maxHeap.size()) {
+            return (minHeap.peek() + maxHeap.peek()) / 2.0;
+        } else return minHeap.peek();
+    }
+
+
+
 }

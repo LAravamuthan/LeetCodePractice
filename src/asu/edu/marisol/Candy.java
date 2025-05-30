@@ -10,6 +10,7 @@ public class Candy {
 
     /**
      * Math solution.
+     * TODO: Learn this algorithm again.
      *
      * @time-complexity - O(n^2) iteration inside one other (whenever one changes).
      * @space-complexity - O(n) - IMO its constant space lets see (if dont consider answer as extra space), but we are

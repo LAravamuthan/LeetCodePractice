@@ -1,5 +1,9 @@
 package asu.edu.marisol;
 
+/**
+ * @author Aravamuthan Lakshminarayanan
+ * @project LeetCodePractice
+ */
 public class ImplementTrie {
     TrieNode root;
     public ImplementTrie() {
