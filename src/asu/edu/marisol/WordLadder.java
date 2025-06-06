@@ -31,13 +31,12 @@ public class WordLadder {
         Queue<Pair<String, Integer>> backQ = new ArrayDeque<>();
         Map<String, Integer> visitedFront = new HashMap<>();
         Map<String, Integer> visitedBack = new HashMap<>();
-        boolean fromFront = true;
 
         frontQ.offer(new Pair<>(beginWord, 1));
-        backQ.offer(new Pair<>(endWord, 1));
+        backQ.offer(new Pair<>(endWord, 0));
 
         visitedFront.put(beginWord, 1);
-        visitedBack.put(endWord, 1);
+        visitedBack.put(endWord, 0);
 
         while (!frontQ.isEmpty() && !backQ.isEmpty()) {
             if (frontQ.size() > backQ.size()) {
@@ -68,7 +67,6 @@ public class WordLadder {
                         }
                     }
                 }
-                fromFront = !fromFront;
             }
         }
 

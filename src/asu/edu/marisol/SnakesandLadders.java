@@ -33,7 +33,7 @@ public class SnakesandLadders {
         // location on board for the player to row and cell in
         Pair<Integer, Integer> [] locationOfCells = new Pair[n * n + 1];
 
-        // This list for reversing the col idx for loading the cell loacation.
+        // This list for reversing the col idx for loading the cell location.
         List<Integer> cols = new ArrayList<>();
 
         for (int i = 0; i < n; i++) {
