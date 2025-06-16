@@ -64,4 +64,36 @@ public class GenerateParentheses {
         return ans;
     }
 
+    /**
+     * Backtracking solution practice,
+     *
+     * @time-complexity - O (2^2n).
+     * @space-complexity - O (n)
+     */
+    public List<String> generateParenthesis3(int n) {
+        answer = new ArrayList<>();
+        backTrack(0, 0, n, new StringBuilder());
+        return answer;
+    }
+
+    private List<String> answer;
+
+    private void backTrack(int leftCount, int rightCount, int n, StringBuilder sb) {
+        if (leftCount == rightCount && leftCount == n) {
+            answer.add(sb.toString());
+            return;
+        }
+
+        if (leftCount < n) {
+            backTrack(leftCount + 1, rightCount, n, sb.append('('));
+            sb.deleteCharAt(sb.length() - 1);
+        }
+
+        if (rightCount < leftCount) {
+            backTrack(leftCount, rightCount + 1, n, sb.append(')'));
+            sb.deleteCharAt(sb.length() - 1);
+        }
+    }
+
+
 }

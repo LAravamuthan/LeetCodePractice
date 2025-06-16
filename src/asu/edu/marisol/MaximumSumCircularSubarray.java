@@ -24,8 +24,31 @@ public class MaximumSumCircularSubarray {
             minSum = Math.min(curMin, minSum);
             totalSum += nums[i];
         }
-        // TODO: understand more why condition for negative case, but for this makes sense
-        //  for all negative element based array.
+
+        return maxSum < 0 ? maxSum : Math.max(maxSum, totalSum - minSum);
+    }
+
+
+    /**
+     * Kadane algo two times and max of that.
+     *
+     * @time-complexity - O (n).
+     * @space-complexity - O (1).
+     */
+    public int maxSubarraySumCircular2(int[] nums) {
+
+        int totalSum = nums[0], maxSum = nums[0], curMaxSum = nums[0], minSum = nums[0], curMinSum = nums[0];
+
+        for (int i = 1; i < nums.length; i++) {
+            totalSum += nums[i];
+            curMaxSum = Math.max(curMaxSum + nums[i], nums[i]);
+            maxSum = Math.max(curMaxSum, maxSum);
+            curMinSum = Math.min(curMinSum + nums[i], nums[i]);
+            minSum = Math.min(minSum, curMinSum);
+        }
+
+        // Found for maxSum < 0, we don't want minSum give using minSum will lead to best sum of 0 meaning dont select
+        // any num, that is not allowed.
         return maxSum < 0 ? maxSum : Math.max(maxSum, totalSum - minSum);
     }
 

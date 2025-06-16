@@ -84,4 +84,43 @@ public class FindFirstandLastPositionofElementinSortedArray {
         return -1;
     }
 
+
+    /**
+     * Binary Search approach, Practice 2.
+     *
+     * @time-complexity - O (2logn).
+     * @space-complexity - O (1).
+     */
+    public int[] searchRange3(int[] nums, int target) {
+        int firstPosition = binarySearch(nums, target, true);
+        if (firstPosition == -1) return new int[] {-1, -1};
+        int lastPosition = binarySearch(nums, target, false);
+        return new int[] {firstPosition, lastPosition};
+    }
+
+    private int binarySearch(int[] nums, int target, boolean firstPosition) {
+        int left = 0, right = nums.length - 1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] == target) {
+                if (firstPosition) {
+                    if (mid == 0 || nums[mid - 1] != target) return mid;
+                    else right = mid - 1;
+                } else {
+                    if (mid == nums.length - 1 || nums[mid + 1] != target) return mid;
+                    else left = mid + 1;
+                }
+            }
+            else {
+                if (target < nums[mid])
+                    right = mid - 1;
+                else
+                    left = mid + 1;
+            }
+        }
+
+        return -1;
+    }
+
 }

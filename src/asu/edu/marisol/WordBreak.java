@@ -98,4 +98,56 @@ public class WordBreak {
         this.memo[i] = 0;
         return false;
     }
+
+    /**
+     * DP version of solving the problem, Practice chey bhai.
+     *
+     * @time-complexity - O(N^3) -> s length.
+     * @space-complexity - O(M^2 * N) -> M -> word length, N no. of wordlist.
+     */
+    public boolean wordBreak4(String s, List<String> wordDict) {
+        int n = s.length();
+        boolean dp[] = new boolean[n + 1];
+        Set<String> wordSet = new HashSet<>(wordDict);
+        dp[0] = true;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 0; j < i; j++) {
+                if (dp[j] && wordSet.contains(s.substring(j, i))) {
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+
+        return dp[n];
+    }
+
+    /**
+     * DP version of solving the problem, Practice chey bhai.
+     * In here we iterate over the wordSet.
+     *
+     * @time-complexity - O(N^3) -> s length.
+     * @space-complexity - O(M^2 * N) -> M -> word length, N no. of wordlist.
+     */
+    public boolean wordBreak5(String s, List<String> wordDict) {
+        int n = s.length();
+        Set<String> wordSet = new HashSet<>(wordDict);
+
+        boolean[] dp = new boolean[n + 1];
+        dp[0] = true;
+
+        for (int i = 1; i <= n; i++) {
+            for (String word : wordSet) {
+                if (i - word.length() < 0)
+                    continue;
+                if (dp[i - word.length()] && s.substring(i - word.length(), i).equals(word)) {
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+
+        return dp[n];
+    }
+
 }
