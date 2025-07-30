@@ -52,4 +52,41 @@ public class HIndex {
         }
         return 0;
     }
+
+
+    /**
+     *  The H index calculation for sorting, lets practice this.
+     *
+     * @time-complexity - O(nlogn).
+     * @space-complexity - O(1).
+     */
+    public int hIndex3(int[] citations) {
+        Arrays.sort(citations);
+        int i = 0;
+        while (i < citations.length && citations[citations.length - 1 - i] > i) i++;
+        return i;
+    }
+
+
+    /**
+     * Counting sort usage, practice.
+     *
+     * @time-complexity - O(n).
+     * @space-complexity - O(n).
+     */
+    public int hIndex4(int[] citations) {
+        int n = citations.length;
+        int[] counts = new int[n + 1];
+
+        for (int i = 0; i < citations.length; i++)
+            counts[Math.min(n,citations[i])]++;
+
+        int sumOfEle = 0;
+        for (int hIdx = n; hIdx >= 0; hIdx--) {
+            sumOfEle += counts[hIdx];
+            if (sumOfEle >= hIdx) return hIdx;
+        }
+
+        return -1;
+    }
 }

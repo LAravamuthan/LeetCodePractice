@@ -35,4 +35,33 @@ public class SimplifyPath {
 
         return result.length() > 0 ? result.toString() : "/";
     }
+
+
+    /**
+     * Stack approach Practice.
+     *
+     * @time-complexity - O (n).
+     * @space-complexity - O (n) --> 2n, n for string array of parts.
+     */
+    public String simplifyPath2(String path) {
+        Stack<String> dirs = new Stack<>();
+        String[] pathParts = path.split("/");
+
+        for (String pathPart : pathParts) {
+            if (pathPart.isEmpty() || pathPart.equals(".")) continue;
+            else if (pathPart.equals("..")) {
+                if (!dirs.isEmpty()) dirs.pop();
+            } else
+                dirs.add(pathPart);
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        for (String dir : dirs) {
+            sb.append('/');
+            sb.append(dir);
+        }
+
+        return sb.length() == 0 ? "/" : sb.toString();
+    }
 }

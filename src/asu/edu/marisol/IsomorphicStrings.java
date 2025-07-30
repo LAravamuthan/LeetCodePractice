@@ -63,4 +63,53 @@ public class IsomorphicStrings {
 
         return sbTransformed.toString();
     }
+
+    /**
+     * Mapping approach between S and T.
+     *
+     * @time-complexity - O (N), length of Strings.
+     * @space-complexity - O (1)
+     */
+    public boolean isIsomorphic3(String s, String t) {
+        if (s.length() != t.length()) return false;
+
+        Map<Character, Character> sMap = new HashMap<>();
+        Map<Character, Character> tMap = new HashMap<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            char sCh = s.charAt(i), tCh = t.charAt(i);
+
+            if (!sMap.containsKey(sCh) && !tMap.containsKey(tCh)) {
+                sMap.put(sCh, tCh);
+                tMap.put(tCh, sCh);
+            } else if ((!sMap.containsKey(sCh) || sMap.get(sCh) != tCh)
+                    || (!tMap.containsKey(tCh) || tMap.get(tCh) != sCh)) return false;
+        }
+
+        return true;
+    }
+
+
+    /**
+     * Transformation of S and T, Practice again.
+     *
+     * @time-complexity - O (N), length of Strings.
+     * @space-complexity - O (N)
+     */
+    public boolean isIsomorphic4(String s, String t) {
+        return transform2(s).equals(transform2(t));
+    }
+
+    private String transform2(String s) {
+        Map<Character, Integer> characterFirstOccurence = new HashMap<>();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (!characterFirstOccurence.containsKey(ch))
+                characterFirstOccurence.put(ch, i);
+            sb.append(characterFirstOccurence.get(ch)).append('#');
+        }
+
+        return sb.toString();
+    }
 }

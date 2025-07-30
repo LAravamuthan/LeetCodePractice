@@ -26,4 +26,22 @@ public class ContainsDuplicateII {
 
         return false;
     }
+
+    /**
+     * Mathematics problem.
+     *
+     * @time-complexity - O(logN).
+     * @space-complexity - O(min(n,k)).
+     */
+    public boolean containsNearbyDuplicate2(int[] nums, int k) {
+        Set<Integer> seen = new HashSet<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            if (seen.contains(nums[i])) return true;
+            seen.add(nums[i]);
+            if (i - k >= 0) seen.remove(nums[i - k]);
+        }
+
+        return false;
+    }
 }

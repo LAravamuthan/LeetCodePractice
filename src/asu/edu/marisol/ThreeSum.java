@@ -69,4 +69,36 @@ public class ThreeSum {
         return res;
     }
 
+
+    /**
+     * Practice, 3sum with 2 sum approach.
+     *
+     * @time-complexity - O(n^2).
+     * @space-complexity - O(n^2).
+     */
+    public List<List<Integer>> threeSum3(int[] nums) {
+        Set<List<Integer>> res = new HashSet<>();
+        Set<Integer> dupSet = new HashSet<>();
+        Map<Integer, Integer> anchorMap = new HashMap<>();
+
+        for (int i = 0; i < nums.length - 2; i++) {
+            if (dupSet.add(nums[i])) {
+                for (int j = i + 1; j < nums.length; j++) {
+                    int compliment = -nums[i] - nums[j];
+
+                    if (anchorMap.containsKey(compliment) && anchorMap.get(compliment) == i) {
+                        List<Integer> triplet = Arrays.asList(nums[i], nums[j], compliment);
+                        Collections.sort(triplet);
+                        res.add(triplet);
+                    }
+
+                    anchorMap.put(nums[j], i);
+                }
+            }
+        }
+
+        return new ArrayList<>(res);
+    }
+
+
 }

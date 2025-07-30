@@ -62,4 +62,30 @@ public class WordPattern {
 
         return true;
     }
+
+
+    /**
+     * HashMap approach with 1 hashmap. Not a safe optimization, not a fan of this.
+     * But practice away buddy.
+     *
+     * @time-complexity - O(n).
+     * @space-complexity - O(n)
+     */
+    public boolean wordPattern3(String pattern, String s) {
+        Map map = new HashMap<>();
+        String[] words = s.split(" ");
+        if (words.length != pattern.length()) return false;
+
+        for (int i = 0; i < words.length; i++) {
+            char ch = pattern.charAt(i);
+            String word = words[i];
+
+            if (!map.containsKey(ch)) map.put(ch, i);
+            if (!map.containsKey(word)) map.put(word, i);
+
+            if (!map.get(ch).equals(map.get(word))) return false;
+        }
+
+        return true;
+    }
 }

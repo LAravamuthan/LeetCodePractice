@@ -36,5 +36,30 @@ public class LongestConsecutiveSequence {
 
     }
 
+    /**
+     * Simple hashMap solution, Practice.
+     *
+     * @time-complexity - O (n).
+     * @space-complexity - O (n).
+     */
+    public int longestConsecutive2(int[] nums) {
+        Set<Integer> numSet = new HashSet<>();
+        int maxLen = Integer.MIN_VALUE;
+
+        for (int num : nums) numSet.add(num);
+
+        for (int num : nums) {
+            if (!numSet.contains(num - 1)) {
+                int streak = 1, curNum = num;
+                while (numSet.contains(curNum + 1)) {
+                    streak++; curNum++;
+                }
+                maxLen = Math.max(maxLen, streak);
+            }
+        }
+
+        return maxLen;
+    }
+
 
 }

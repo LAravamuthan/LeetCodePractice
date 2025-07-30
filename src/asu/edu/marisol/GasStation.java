@@ -27,4 +27,29 @@ public class GasStation {
 
         return totalGain >= 0 ? answer : -1;
     }
+
+    /**
+     * Sliding window.
+     *
+     * @time-complexity - O(n).
+     * @space-complexity - O(1).
+     */
+    public int canCompleteCircuit2(int[] gas, int[] cost) {
+        int fuel = 0, s = 0, e = 0;
+        int size = gas.length;
+
+        while (s < size) {
+            int costToMove = gas[e % size] - cost[e % size];
+            if (fuel + costToMove >= 0) {
+                if (e - s + 1 == size) return s;
+                fuel += costToMove;
+                e++;
+            } else {
+                if (s < e) fuel -= gas[s] - cost[s];
+                if (s == e) e++;
+                s++;
+            }
+        }
+        return -1;
+    }
 }

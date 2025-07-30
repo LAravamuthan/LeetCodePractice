@@ -41,7 +41,7 @@ public class ValidParentheses {
      * @space-complexity - O (n)
      */
     public boolean isValid2(String s) {
-        Deque<Character> characterStack = new ArrayDeque();
+        Stack<Character> characterStack = new Stack<>();
         for (char ch : s.toCharArray()) {
             switch (ch) {
                 case '}':

@@ -140,4 +140,69 @@ public class MinimumSizeSubarraySum {
         return false;
     }
 
+    /**
+     * Binary Search approach, Practice. again
+     *
+     * Imp: The thing to note here is the fact that, working in indices with lo = 0 and hi = length - 1 , won't work at all.
+     * The problem here is not the boundary management, but the context itself is different. Basically the length only value
+     * we need to work with.
+     *
+     * @time-complexity - O(nlogn).
+     * @space-complexity - O(1).
+     */
+    public int minSubArrayLen5(int target, int[] nums) {
+        int low = 1, high = nums.length;
+
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+            if (makesTarget(target, nums, mid))
+                high = mid;
+            else
+                low = mid + 1;
+        }
+
+        return makesTarget(target, nums, low) ? low : 0;
+    }
+
+    public boolean makesTarget(int target, int[] nums, int length) {
+        int i = 0, curSum = 0, n = nums.length;
+
+        for (; i < length; i++) {
+            curSum += nums[i];
+            if (curSum >= target) return true;
+        }
+
+        while (i < n) {
+            curSum += nums[i];
+            curSum -= nums[i - length];
+            if (curSum >= target) return true;
+            i++;
+        }
+
+        return false;
+    }
+
+    /**
+     * Sliding window, right prefix.
+     *
+     * @time-complexity - O(n).
+     * @space-complexity - O(1).
+     */
+    public int minSubArrayLen6(int target, int[] nums) {
+
+        int minLength = Integer.MAX_VALUE, l = 0, r = 0, curSum = 0;
+
+        for (; r < nums.length; r++) {
+            curSum += nums[r];
+
+            while (curSum >= target) {
+                int length = r - l + 1;
+                minLength = Math.min(minLength, length);
+                curSum -= nums[l++];
+            }
+        }
+
+        return minLength != Integer.MAX_VALUE ? minLength : 0;
+    }
+
 }

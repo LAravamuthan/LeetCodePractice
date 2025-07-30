@@ -153,4 +153,100 @@ public class BasicCalculator {
         return result + (sign * operand);
     }
 
+
+    /**
+     * Stack usage for calculation, practice, reverse parsing and parsing the content forward
+     * in sub method for each bracket pari.
+     *
+     * @time-complexity - O (n).
+     * @space-complexity - O (n).
+     */
+    public int calculate4(String s) {
+        Stack stack = new Stack();
+        int currentDigit = 0, n = 0;
+        for (int i = s.length() - 1; i >= 0; i--) {
+            char ch = s.charAt(i);
+            if (Character.isDigit(ch)) {
+                currentDigit += (int) ((ch - '0') * Math.pow(10, n));
+                n++;
+            }
+            else if (ch != ' ') {
+                if (n > 0) {
+                    stack.push(currentDigit);
+                    currentDigit = 0;
+                    n = 0;
+                }
+                if (ch == '(') {
+                    int subRes = evalute(stack);
+                    stack.push(subRes);
+                } else {
+                    stack.push(ch);
+                }
+            }
+        }
+
+        if (currentDigit > 0) stack.push(currentDigit);
+        return evalute(stack);
+    }
+
+    private int evalute(Stack stack) {
+        if (stack.isEmpty() || stack.peek() instanceof Integer) stack.push(0);
+        int res = (int) stack.pop();
+        while (!stack.isEmpty() && (char) stack.peek() != ')') {
+            char sign = (char) stack.pop();
+            if (sign == '+')
+                res += (int) stack.pop();
+            else
+                res -= (int) stack.pop();
+        }
+
+        if (!stack.isEmpty() && (char) stack.peek() == ')') stack.pop();
+        return res;
+    }
+
+    /**
+     * Stack usage for calculation, practice, forward parsing cleaner approach.
+     * Also, safer stack implementation
+     *
+     * @time-complexity - O (n).
+     * @space-complexity - O (n).
+     */
+    public int calculate5(String s) {
+        int result = 0, operand = 0, sign = 1;
+        Stack<Integer> stack = new Stack<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+
+            if (Character.isDigit(ch))
+                operand = operand * 10 + ch - '0';
+            else if (ch != ' ') {
+                if (ch == '+') {
+                    result += operand * sign;
+                    operand = 0; sign = 1;
+                } else if (ch == '-') {
+                    result += operand * sign;
+                    operand = 0; sign = -1;
+                } else if (ch == '(') {
+                    stack.push(result);
+                    stack.push(sign);
+                    result = 0; sign = 1;
+                } else if (ch == ')') {
+                    result += operand * sign;
+                    result *= stack.pop();
+                    result += stack.pop();
+
+                    operand = 0; sign = 1;
+                }
+            }
+        }
+
+        return result + (operand * sign);
+    }
+
+
+
+
+
+
 }

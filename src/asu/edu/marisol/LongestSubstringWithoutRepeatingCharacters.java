@@ -1,5 +1,7 @@
 package asu.edu.marisol;
 
+import asu.edu.arav.impgoogle.MergeInterval;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -81,4 +83,30 @@ public class LongestSubstringWithoutRepeatingCharacters {
 
         return res;
     }
+
+
+    /**
+     * Sliding window approach with hashMap as extra space, practice for index as values.
+     *
+     * @time-complexity - O (n)
+     * @space-complexity - O (min(k, n)), where k no. of unique characters (max of 26) and n no. of characters.
+     */
+    public int lengthOfLongestSubstring4(String s) {
+        int l = 0, r = 0, maxLength = Integer.MIN_VALUE, n = s.length();
+        Map<Character, Integer> charMap = new HashMap<>();
+
+        while (r < n) {
+            char ch = s.charAt(r);
+            if (charMap.containsKey(ch))
+                l = Math.max(l, charMap.get(ch) + 1);
+
+            maxLength = Math.max(r - l + 1, maxLength);
+            charMap.put(ch, r);
+            r++;
+        }
+
+        return maxLength == Integer.MIN_VALUE ? 0 : maxLength;
+    }
+
+
 }
