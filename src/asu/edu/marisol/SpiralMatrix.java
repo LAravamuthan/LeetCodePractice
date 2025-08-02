@@ -54,4 +54,44 @@ public class SpiralMatrix {
         }
         return ansList;
     }
+
+    /**
+     * This is a Matrix simulation problem, lets see how to solve this.
+     * @time-complexity - O (n * m)
+     * @space-complexity - O (n * m)
+     */
+    public List<Integer> spiralOrder2(int[][] matrix) {
+        final List<Integer> spiralOrder = new ArrayList<>();
+        int rows = matrix.length, cols = matrix[0].length;
+        int left = 0, right = cols - 1, up = 0, down = rows - 1;
+
+        while (spiralOrder.size() < rows * cols) {
+            // Left to right, using top row
+            for (int col = left; col <= right; col++)
+                spiralOrder.add(matrix[up][col]);
+
+            // top to bottom using the rightmost col
+            for (int row = up + 1; row <= down; row++)
+                spiralOrder.add(matrix[row][right]);
+
+            // right to left using down row
+            if (up < down) {
+                for (int col = right - 1; col >= left; col--)
+                    spiralOrder.add(matrix[down][col]);
+            }
+
+
+            // down to up using leftMost col
+            if (left < right) {
+                for (int row = down - 1; row > up; row--)
+                    spiralOrder.add(matrix[row][left]);
+            }
+
+            left++; right--;
+            up++; down--;
+        }
+
+
+        return spiralOrder;
+    }
 }
