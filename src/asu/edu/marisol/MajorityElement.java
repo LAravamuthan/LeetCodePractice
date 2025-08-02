@@ -61,4 +61,37 @@ public class MajorityElement {
 
         return leftCount > rightCount ? leftCandidate : rightCandidate;
     }
+
+    /**
+     * Divide and conquer way of doing things second practice.
+     *
+     * @time-complexity - O(NlogN).
+     * @space-complexity - O (logN)
+     */
+    public int majorityElement3(int[] nums) {
+        if (nums == null || nums.length == 0) return Integer.MAX_VALUE;
+
+        return findMajority(nums, 0, nums.length - 1);
+    }
+
+    private int countValue(int[] nums, int left, int right, int value) {
+        int count = 0;
+        for (int i = left; i <= right; i++)
+            if (nums[i] == value) count++;
+        return count;
+    }
+
+    private int findMajority(int[] nums, int left, int right) {
+        if (left == right) return nums[left];
+
+        int mid = left + (right - left) / 2;
+
+        int leftMajority = findMajority(nums, left, mid);
+        int rightMajority = findMajority(nums, mid + 1, right);
+
+        int leftCount = countValue(nums, left, mid, leftMajority);
+        int rightCount = countValue(nums, mid + 1, right, rightMajority);
+
+        return leftCount > rightCount ? leftMajority : rightMajority;
+    }
 }

@@ -103,4 +103,26 @@ public class JumpGame {
         return false;
     }
 
+
+    /**
+     * Trying DP approach and practicing.
+     *
+     * @time-complexity - O(n^2) - loop inside loop.
+     * @space-complexity - O(n)
+     */
+    public boolean canJump5(int[] nums) {
+        boolean [] dp = new boolean[nums.length];
+        dp[0] = true;
+
+        for (int i = 0; i < nums.length; i++) {
+            if (!dp[i]) return false;
+            int maxJump = Math.min(i + nums[i], nums.length - 1);
+            for (int j = i + 1; j <= maxJump; j++)
+                dp[j] = true;
+        }
+        return true;
+    }
+
+
+
 }
